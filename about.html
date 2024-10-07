@@ -75,7 +75,6 @@
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 1s forwards; /* Apply fade-in animation */
             animation-delay: 1.5s; /* Delay for content */
-            position: relative; /* Relative positioning for absolute elements */
         }
 
         img {
@@ -100,35 +99,6 @@
             align-items: flex-start; /* Align text to the left */
         }
 
-        .cat-container {
-            position: absolute; /* Position the cat container absolutely */
-            bottom: 20px; /* Position it above the bottom edge */
-            left: 0; /* Start from the left edge */
-            width: 100%; /* Full width to match the red line */
-            overflow: hidden; /* Hide overflow */
-        }
-
-        .walking-cat {
-            position: absolute; /* Position the cat absolutely */
-            width: 50px; /* Adjust the width as needed */
-            animation: moveCat 4s linear infinite; /* Move the cat */
-        }
-
-        @keyframes moveCat {
-            0% {
-                left: -50px; /* Start from the left outside of the view */
-                transform: scaleX(1); /* Normal orientation */
-            }
-            50% {
-                left: calc(100% - 50px); /* Move to the right edge */
-                transform: scaleX(-1); /* Flip horizontally */
-            }
-            100% {
-                left: -50px; /* Return to the start */
-                transform: scaleX(1); /* Normal orientation */
-            }
-        }
-
         footer {
             text-align: center;
             padding: 20px;
@@ -138,34 +108,33 @@
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 1s forwards; /* Apply fade-in animation */
             animation-delay: 2s; /* Delay for footer */
+            position: relative; /* Make position relative for the cat GIF */
         }
 
-        /* Fullscreen styles */
-        .fullscreen {
-            position: fixed;
-            top: 0;
+        /* Cat GIF Animation */
+        .cat {
+            position: absolute;
+            top: -20px; /* Position it above the footer */
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            display: none; /* Initially hidden */
-            justify-content: center;
-            align-items: center;
-            opacity: 0; /* Initial opacity for fade effect */
-            transition: opacity 0.5s ease; /* Fade transition */
+            animation: moveCat 5s linear infinite; /* Animation to move cat */
+            width: 100px; /* Adjust width as needed */
         }
 
-        .fullscreen.show {
-            display: flex; /* Show the fullscreen overlay */
-            opacity: 1; /* Full opacity when shown */
+        @keyframes moveCat {
+            0% {
+                left: -100px; /* Start off-screen */
+                transform: scaleX(1); /* Face right */
+            }
+            50% {
+                left: calc(100% + 100px); /* Move to the right */
+                transform: scaleX(-1); /* Flip to face left */
+            }
+            100% {
+                left: -100px; /* Start off-screen again */
+                transform: scaleX(1); /* Face right */
+            }
         }
 
-        .fullscreen img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10%; /* Slightly round the corners */
-        }
     </style>
 </head>
 <body>
@@ -189,19 +158,12 @@
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
         </div>
-        <div class="cat-container">
-            <img src="cat.gif" alt="Walking Cat" class="walking-cat"> <!-- Replace with your cat GIF -->
-        </div>
     </div>
 
     <footer>
+        <img src="cat.gif" alt="Walking Cat" class="cat"> <!-- Replace with your cat GIF -->
         <p>&copy; 2024 Ikramhakimm Page</p>
     </footer>
-
-    <!-- Fullscreen Image Overlay -->
-    <div class="fullscreen" id="fullscreen">
-        <img src="myself.jpg" alt="About Me fullscreen" id="fullscreenImage"> <!-- Replace with your image -->
-    </div>
 
     <script>
         // Get elements
