@@ -63,8 +63,9 @@
 
         .content {
             display: flex; /* Use flexbox for layout */
-            align-items: flex-start; /* Align items at the top */
-            justify-content: center; /* Center horizontally */
+            flex-direction: column; /* Stack content vertically */
+            align-items: center; /* Center horizontally */
+            position: relative; /* Position relative to allow absolute positioning of cat */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px auto; /* Center the content with auto margins */
             padding: 30px; /* Padding around the content */
@@ -77,31 +78,32 @@
             animation-delay: 1.5s; /* Delay for content */
         }
 
-        .gif-container {
-            position: relative; /* Relative positioning for the GIF container */
-            width: 220px; /* Set the width to match the image */
-            height: auto; /* Maintain aspect ratio */
+        .cat-container {
+            position: absolute; /* Allow the cat to move freely within the content */
+            bottom: 10px; /* Position the cat above the footer */
+            left: 0; /* Start from the left */
+            width: 100%; /* Make container full width */
             overflow: hidden; /* Hide overflow */
-            flex-shrink: 0; /* Prevent shrinking */
-            animation: moveLeftRight 4s linear infinite; /* Add animation */
         }
 
-        @keyframes moveLeftRight {
+        .walking-cat {
+            position: absolute; /* Position absolutely to allow movement */
+            width: 100px; /* Set the width of the cat */
+            animation: walk 4s linear infinite; /* Walk animation */
+        }
+
+        @keyframes walk {
             0% {
-                transform: translateX(0); /* Start position */
+                left: -100px; /* Start off-screen to the left */
+                transform: scaleX(1); /* Normal orientation */
             }
             50% {
-                transform: translateX(20px); /* Move right */
+                transform: scaleX(1); /* Normal orientation */
             }
             100% {
-                transform: translateX(0); /* Back to start */
+                left: calc(100% + 100px); /* Move off-screen to the right */
+                transform: scaleX(-1); /* Flip orientation */
             }
-        }
-
-        .animated-gif {
-            width: 100%; /* Make GIF responsive */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 15%; /* Slightly round the corners */
         }
 
         img {
@@ -182,12 +184,12 @@
 
     <div class="content">
         <img src="myself.jpg" alt="About Me" id="aboutImage"> <!-- Replace with your image -->
-        <div class="gif-container">
-            <img src="cat.gif" alt="Animated GIF" class="animated-gif"> <!-- Replace with your GIF -->
-        </div>
         <div class="info">
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
+        </div>
+        <div class="cat-container">
+            <img src="cat.gif" alt="Walking Cat" class="walking-cat"> <!-- Replace with your cat GIF -->
         </div>
     </div>
 
