@@ -20,6 +20,7 @@
             min-height: 100vh; /* Full viewport height */
             opacity: 0; /* Start with hidden body for fade-in effect */
             animation: fadeIn 1s forwards; /* Fade-in animation */
+            cursor: none; /* Hide default cursor */
         }
 
         @keyframes fadeIn {
@@ -29,14 +30,12 @@
         }
 
         video {
-            position: absolute; /* Position video */
-            top: 50%;
-            left: 50%;
+            position: fixed; /* Fixed position */
+            top: 0;
+            left: 0;
             width: 100%; /* Cover the entire viewport */
-            height: auto; /* Maintain aspect ratio */
-            min-height: 100%;
-            min-width: 100%;
-            transform: translate(-50%, -50%); /* Center video */
+            height: 100%; /* Cover the entire viewport */
+            object-fit: cover; /* Maintain aspect ratio and cover */
             z-index: -1; /* Send video to back */
         }
 
@@ -165,6 +164,18 @@
                 height: 250px; /* Adjust logo height for smaller screens */
             }
         }
+
+        /* Custom cursor styles */
+        .cursor {
+            width: 20px; /* Width of custom cursor */
+            height: 20px; /* Height of custom cursor */
+            background-color: rgba(255, 255, 255, 0.7); /* Color of custom cursor */
+            border-radius: 50%; /* Make it circular */
+            position: fixed; /* Fixed position */
+            pointer-events: none; /* Prevent it from blocking clicks */
+            transform: translate(-50%, -50%); /* Center the cursor */
+            transition: background-color 0.2s; /* Transition effect */
+        }
     </style>
 </head>
 <body>
@@ -201,6 +212,31 @@
     <footer>
         <p>&copy; 2024 Ikramhakimm Page</p>
     </footer>
+
+    <!-- Custom cursor -->
+    <script>
+        // Create custom cursor element
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Change cursor color on hover
+        const hoverableElements = document.querySelectorAll('nav a, .logo-container img');
+        hoverableElements.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                cursor.style.backgroundColor = 'rgba(255, 255, 0, 0.8)'; // Change color on hover
+            });
+            element.addEventListener('mouseout', () => {
+                cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'; // Reset color
+            });
+        });
+    </script>
 
 </body>
 </html>
