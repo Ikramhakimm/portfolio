@@ -21,7 +21,154 @@
             animation: fadeIn 1s forwards; /* Add fade-in animation */
         }
 
-        /* (Rest of your existing styles) ... */
+        header, nav, .content, footer {
+            opacity: 0; /* Start with opacity 0 for each section */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            width: 100%;
+            animation-delay: 0.5s; /* Delay for header */
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+            animation-delay: 1s; /* Delay for nav */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px; /* Limit width for better readability */
+            animation-delay: 1.5s; /* Delay for content */
+        }
+
+        .projects {
+            display: grid; /* Use grid layout for project images */
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px; /* Space between images */
+            margin: 20px;
+        }
+
+        .project-container {
+            text-align: center; /* Center text under each image */
+        }
+
+        .projects img {
+            width: 100%; /* Full width of the container */
+            height: 150px; /* Fixed height for uniformity */
+            object-fit: cover; /* Cover the container without stretching */
+            border-radius: 10%; /* Slightly round the corners */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: transform 0.3s; /* Smooth scaling */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 0.5s forwards; /* Add fade-in animation */
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .projects img:hover {
+            transform: scale(1.05); /* Scale image slightly on hover */
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black with slight opacity */
+            justify-content: center; /* Center image horizontally */
+            align-items: center; /* Center image vertically */
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox:target {
+            display: flex; /* Show the lightbox */
+        }
+
+        /* Close button styles */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+            font-size: 30px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            animation-delay: 2s; /* Delay for footer */
+        }
+
+        /* Pagination controls */
+        .pagination {
+            margin: 20px;
+        }
+
+        .pagination button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Hover effect for buttons */
+        }
+
+        .hidden {
+            display: none; /* Class to hide elements */
+        }
 
         /* Three.js container */
         #threejs-container {
@@ -29,8 +176,6 @@
             height: 400px;
             display: none; /* Hidden initially */
         }
-
-        /* (Rest of your existing styles) ... */
     </style>
 </head>
 <body>
@@ -52,12 +197,53 @@
         <h3>My Projects</h3>
         <div class="projects" id="projectContainer">
             <div class="project-container">
-                <a href="#" onclick="show3DModel('IKARAMMM.glb')">
+                <a href="#" onclick="show3DModel('path/to/your-model.glb')">
                     <img src="tryy.png" alt="Project 1" class="project-image">
                 </a>
                 <p>Make a platformer game using Godot Engine.</p>
             </div>
-            <!-- (Other project containers...) -->
+            <div class="project-container">
+                <a href="#lightbox2">
+                    <img src="tryyy.png" alt="Project 2" class="project-image">
+                </a>
+                <p>Make lego character using Blender 3D.</p>
+            </div>
+            <div class="project-container">
+                <a href="#lightbox3">
+                    <img src="tryyyy.png" alt="Project 3" class="project-image">
+                </a>
+                <p>Make Building using Blender 3D.</p>
+            </div>
+            <div class="project-container">
+                <a href="#lightbox4">
+                    <img src="tryyyyy.png" alt="Project 4" class="project-image">
+                </a>
+                <p>Make racing game using Unity 3D.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox5">
+                    <img src="fullll.png" alt="Project 5" class="project-image">
+                </a>
+                <p>Full view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox6">
+                    <img src="meja.png" alt="Project 6" class="project-image">
+                </a>
+                <p>Table view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox7">
+                    <img src="posterr.png" alt="Project 7" class="project-image">
+                </a>
+                <p>Poster view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox8">
+                    <img src="ikramposter.png" alt="Project 8" class="project-image">
+                </a>
+                <p>My poster.</p>
+            </div>
         </div>
         
         <div id="threejs-container"></div> <!-- Three.js container -->
@@ -68,53 +254,4 @@
         </div>
     </div>
 
-    <!-- Lightbox structure for each project -->
-    <!-- (Lightbox elements...) -->
-
-    <footer>
-        <p>&copy; 2024 My GitHub Page</p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script> <!-- GLTF Loader -->
-    
-    <script>
-        // Three.js setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('threejs-container').appendChild(renderer.domElement);
-
-        // Lighting
-        const light = new THREE.AmbientLight(0x404040);
-        scene.add(light);
-
-        // Show 3D Model Function
-        function show3DModel(modelPath) {
-            document.getElementById('threejs-container').style.display = 'block'; // Show the container
-            scene.clear(); // Clear previous models
-
-            const loader = new THREE.GLTFLoader();
-            loader.load(modelPath, function(gltf) {
-                scene.add(gltf.scene);
-                animate(); // Start rendering loop
-            });
-            
-            camera.position.z = 5; // Adjust camera position
-
-            // Render loop
-            function animate() {
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            }
-        }
-
-        // (Pagination logic...)
-        
-        // Lightbox closing on outside click
-        // (Lightbox logic...)
-    </script>
-
-</body>
-</html>
+    <!-- Lightbox structure for each
