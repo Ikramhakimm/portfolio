@@ -87,6 +87,7 @@
             width: 100%;
             margin-left: 20px; /* Space between icon and progress bar */
             flex-grow: 1; /* Allow progress bar to grow */
+            position: relative; /* Position relative for text */
         }
 
         .progress-bar {
@@ -95,6 +96,15 @@
             border-radius: 5px;
             transition: width 0.5s; /* Smooth transition for width */
             width: 0%; /* Start at 0% */
+        }
+
+        .percentage {
+            position: absolute; /* Position percentage text on top of progress */
+            right: 5px; /* Align to the right */
+            top: 0; /* Align to the top */
+            color: white; /* White text for contrast */
+            font-weight: bold; /* Bold text */
+            font-size: 14px; /* Adjust font size */
         }
 
         footer {
@@ -131,6 +141,7 @@
                 <img src="unity.png" alt="Unity" /> <!-- Replace with your Unity icon -->
                 <div class="progress">
                     <div class="progress-bar" id="unity-progress" style="width: 0%;" title="70% mastery"></div>
+                    <div class="percentage" id="unity-percentage">0%</div>
                 </div>
             </div>
 
@@ -138,6 +149,7 @@
                 <img src="blender.png" alt="Blender" /> <!-- Replace with your Blender icon -->
                 <div class="progress">
                     <div class="progress-bar" id="blender-progress" style="width: 0%;" title="60% mastery"></div>
+                    <div class="percentage" id="blender-percentage">0%</div>
                 </div>
             </div>
 
@@ -145,6 +157,7 @@
                 <img src="ps.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
                 <div class="progress">
                     <div class="progress-bar" id="ps-progress" style="width: 0%;" title="80% mastery"></div>
+                    <div class="percentage" id="ps-percentage">0%</div>
                 </div>
             </div>
 
@@ -152,6 +165,7 @@
                 <img src="csharp.png" alt="C#" /> <!-- Replace with your C# icon -->
                 <div class="progress">
                     <div class="progress-bar" id="csharp-progress" style="width: 0%;" title="75% mastery"></div>
+                    <div class="percentage" id="csharp-percentage">0%</div>
                 </div>
             </div>
 
@@ -159,6 +173,7 @@
                 <img src="cplus.png" alt="C++" /> <!-- Replace with your C++ icon -->
                 <div class="progress">
                     <div class="progress-bar" id="cplus-progress" style="width: 0%;" title="65% mastery"></div>
+                    <div class="percentage" id="cplus-percentage">0%</div>
                 </div>
             </div>
 
@@ -166,6 +181,7 @@
                 <img src="godot.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
                 <div class="progress">
                     <div class="progress-bar" id="gdevelop-progress" style="width: 0%;" title="70% mastery"></div>
+                    <div class="percentage" id="gdevelop-percentage">0%</div>
                 </div>
             </div>
         </div>
@@ -178,8 +194,11 @@
     <script>
         function increaseProgress(progressId, percentage) {
             const progressBar = document.getElementById(progressId);
+            const percentageText = document.getElementById(progressId + '-percentage');
             // Set the progress bar width to the specified percentage
             progressBar.style.width = percentage + '%';
+            // Set the percentage text
+            percentageText.innerText = percentage + '%';
         }
     </script>
 
