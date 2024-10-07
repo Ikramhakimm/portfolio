@@ -17,6 +17,14 @@
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
             min-height: 100vh; /* Ensure it takes full height */
+            opacity: 0; /* Start with hidden body for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
         }
 
         header {
@@ -24,6 +32,9 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay for header */
         }
 
         h1 {
@@ -33,6 +44,9 @@
         nav {
             text-align: center;
             margin: 20px 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -55,6 +69,9 @@
             padding: 20px;
             border-radius: 10px;
             max-width: 600px; /* Limit width for better readability */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1.5s; /* Delay for content */
         }
 
         img {
@@ -77,6 +94,9 @@
             width: 100%;
             position: relative;
             bottom: 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
         }
 
         /* Fullscreen styles */
