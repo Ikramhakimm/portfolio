@@ -12,21 +12,16 @@
             background-size: cover;
             color: white;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         header {
             text-align: center;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for header */
-            width: 100%;
         }
 
         h1 {
             margin: 0;
-            font-size: 2.5em; /* Larger font for the title */
         }
 
         nav {
@@ -39,14 +34,12 @@
             text-decoration: none;
             margin: 0 15px;
             padding: 10px 15px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
             border-radius: 5px;
-            font-weight: bold;
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
-            transform: scale(1.05); /* Slightly scale up on hover */
         }
 
         .content {
@@ -55,61 +48,41 @@
             background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black for content */
             margin: 20px;
             border-radius: 10px;
-            width: 90%; /* Make it responsive */
-            max-width: 800px; /* Limit maximum width */
         }
 
         h2 {
             margin-top: 0;
-            font-size: 2em; /* Larger font for subheading */
         }
 
-        p {
-            margin: 10px 0;
-            font-size: 1.2em; /* Increase font size */
+        .skill {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
         }
 
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-            gap: 20px; /* Space between cards */
-            padding: 20px 0;
+        .skill img {
+            width: 50px; /* Adjust the size of the skill icons */
+            height: auto;
+            margin-right: 15px; /* Space between image and text */
         }
 
-        .skill-card {
-            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background for skills */
-            margin: 10px;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s; /* Smooth scale transition */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
-            cursor: pointer; /* Change cursor to pointer */
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-        }
-
-        .progress-bar {
-            display: none; /* Initially hidden */
-            margin-top: 10px;
-            background-color: rgba(255, 255, 255, 0.2); /* Background for progress bar */
-            border-radius: 10px;
-            overflow: hidden; /* To hide overflow of inner progress */
+        .skill-name {
+            flex-grow: 1; /* Allow the name to grow */
         }
 
         .progress {
-            height: 20px; /* Height of the progress bar */
-            background-color: #4caf50; /* Green color for progress */
-            width: 0; /* Start with 0 width */
-            transition: width 0.5s; /* Smooth width transition */
+            background-color: rgba(255, 255, 255, 0.2); /* Background for progress bar */
+            border-radius: 5px;
+            height: 20px;
+            width: 100%;
+            margin: 5px 0;
         }
 
-        .mastery-level {
-            display: none; /* Initially hidden */
-            font-size: 1.2em; /* Font size for mastery level */
-            margin-top: 10px; /* Space above the mastery level */
-            color: #4caf50; /* Color for mastery level text */
+        .progress-bar {
+            background-color: #76c7c0; /* Color for progress */
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s; /* Smooth transition for width */
         }
 
         footer {
@@ -140,43 +113,59 @@
     <div class="content">
         <h2>My Skills</h2>
         <p>Here are some of the key skills I have developed over the years:</p>
-        <div class="skills-container">
-            <div class="skill-card" data-skill="HTML & CSS" data-percentage="90">HTML & CSS</div>
-            <div class="skill-card" data-skill="JavaScript" data-percentage="70">JavaScript</div>
-            <div class="skill-card" data-skill="Git & GitHub" data-percentage="85">Git & GitHub</div>
-            <div class="skill-card" data-skill="Python Programming" data-percentage="75">Python Programming</div>
-            <div class="skill-card" data-skill="Unity 3D Development" data-percentage="70">Unity 3D Development</div>
-            <div class="skill-card" data-skill="Game Design and Development" data-percentage="80">Game Design and Development</div>
+
+        <div class="skill">
+            <img src="unity_icon.png" alt="Unity" /> <!-- Replace with your Unity icon -->
+            <div class="skill-name">Unity</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div> <!-- Change the width for mastery percentage -->
+            </div>
         </div>
-        
-        <div class="progress-bar" id="progressBar">
-            <div class="progress" id="progress"></div>
+
+        <div class="skill">
+            <img src="blender_icon.png" alt="Blender" /> <!-- Replace with your Blender icon -->
+            <div class="skill-name">Blender</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 60%;" title="60% mastery">60%</div> <!-- Change the width for mastery percentage -->
+            </div>
         </div>
-        <div class="mastery-level" id="masteryLevel">Mastery Level: 0%</div>
+
+        <div class="skill">
+            <img src="photoshop_icon.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
+            <div class="skill-name">Photoshop</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 80%;" title="80% mastery">80%</div> <!-- Change the width for mastery percentage -->
+            </div>
+        </div>
+
+        <div class="skill">
+            <img src="csharp_icon.png" alt="C#" /> <!-- Replace with your C# icon -->
+            <div class="skill-name">C#</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 75%;" title="75% mastery">75%</div> <!-- Change the width for mastery percentage -->
+            </div>
+        </div>
+
+        <div class="skill">
+            <img src="cplusplus_icon.png" alt="C++" /> <!-- Replace with your C++ icon -->
+            <div class="skill-name">C++</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 65%;" title="65% mastery">65%</div> <!-- Change the width for mastery percentage -->
+            </div>
+        </div>
+
+        <div class="skill">
+            <img src="gdevelop_icon.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
+            <div class="skill-name">GDevelop</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div> <!-- Change the width for mastery percentage -->
+            </div>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 My GitHub Page</p>
     </footer>
-
-    <script>
-        // Get all skill cards
-        const skillCards = document.querySelectorAll('.skill-card');
-        const progressBar = document.getElementById('progressBar');
-        const progress = document.getElementById('progress');
-        const masteryLevel = document.getElementById('masteryLevel');
-
-        // Add click event to each skill card
-        skillCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const percentage = card.getAttribute('data-percentage');
-                progress.style.width = percentage + '%'; // Set progress width based on percentage
-                progressBar.style.display = 'block'; // Show progress bar
-                masteryLevel.innerText = `Mastery Level: ${percentage}%`; // Update mastery level text
-                masteryLevel.style.display = 'block'; // Show mastery level text
-            });
-        });
-    </script>
 
 </body>
 </html>
