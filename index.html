@@ -21,14 +21,12 @@
         }
 
         video {
-            position: absolute; /* Position video */
-            top: 50%;
-            left: 50%;
+            position: fixed; /* Fixed position to keep it in place */
+            top: 0;
+            left: 0;
             width: 100%; /* Cover the entire viewport */
-            height: auto; /* Maintain aspect ratio */
-            min-height: 100%;
-            min-width: 100%;
-            transform: translate(-50%, -50%); /* Center video */
+            height: 100%; /* Set height to 100% of viewport */
+            object-fit: cover; /* Cover the area while maintaining aspect ratio */
             z-index: -1; /* Send video to back */
         }
 
