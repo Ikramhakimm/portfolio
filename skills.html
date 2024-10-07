@@ -54,15 +54,22 @@
             margin-top: 0;
         }
 
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows wrapping to the next line */
+        }
+
         .skill {
-            display: inline-block; /* Align icons in a row */
+            display: flex;
+            flex-direction: column; /* Stack the icon and progress bar */
+            align-items: center;
             margin: 15px;
             cursor: pointer; /* Change cursor to pointer for clickability */
-            position: relative; /* Position for absolute child elements */
         }
 
         .skill img {
-            width: 50px; /* Adjust the size of the skill icons */
+            width: 60px; /* Adjust the size of the skill icons */
             height: auto;
             transition: transform 0.3s; /* Add a hover animation */
         }
@@ -76,8 +83,7 @@
             border-radius: 5px;
             height: 20px;
             width: 100%;
-            margin: 5px 0;
-            position: relative; /* Relative position for animated fill */
+            margin-top: 5px; /* Space between icon and progress bar */
         }
 
         .progress-bar {
@@ -117,45 +123,47 @@
         <h2>My Skills</h2>
         <p>Click on a skill icon to reveal your mastery percentage:</p>
 
-        <div class="skill" onclick="increaseProgress('unity-progress', 70)">
-            <img src="unity.png" alt="Unity" /> <!-- Replace with your Unity icon -->
-            <div class="progress">
-                <div class="progress-bar" id="unity-progress" style="width: 0%;" title="70% mastery"></div>
+        <div class="skills-container">
+            <div class="skill" onclick="increaseProgress('unity-progress', 70)">
+                <img src="unity.png" alt="Unity" /> <!-- Replace with your Unity icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="unity-progress" style="width: 0%;" title="70% mastery"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill" onclick="increaseProgress('blender-progress', 60)">
-            <img src="blender.png" alt="Blender" /> <!-- Replace with your Blender icon -->
-            <div class="progress">
-                <div class="progress-bar" id="blender-progress" style="width: 0%;" title="60% mastery"></div>
+            <div class="skill" onclick="increaseProgress('blender-progress', 60)">
+                <img src="blender.png" alt="Blender" /> <!-- Replace with your Blender icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="blender-progress" style="width: 0%;" title="60% mastery"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill" onclick="increaseProgress('ps-progress', 80)">
-            <img src="ps.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
-            <div class="progress">
-                <div class="progress-bar" id="ps-progress" style="width: 0%;" title="80% mastery"></div>
+            <div class="skill" onclick="increaseProgress('ps-progress', 80)">
+                <img src="ps.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="ps-progress" style="width: 0%;" title="80% mastery"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill" onclick="increaseProgress('csharp-progress', 75)">
-            <img src="csharp.png" alt="C#" /> <!-- Replace with your C# icon -->
-            <div class="progress">
-                <div class="progress-bar" id="csharp-progress" style="width: 0%;" title="75% mastery"></div>
+            <div class="skill" onclick="increaseProgress('csharp-progress', 75)">
+                <img src="csharp.png" alt="C#" /> <!-- Replace with your C# icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="csharp-progress" style="width: 0%;" title="75% mastery"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill" onclick="increaseProgress('cplus-progress', 65)">
-            <img src="cplus.png" alt="C++" /> <!-- Replace with your C++ icon -->
-            <div class="progress">
-                <div class="progress-bar" id="cplus-progress" style="width: 0%;" title="65% mastery"></div>
+            <div class="skill" onclick="increaseProgress('cplus-progress', 65)">
+                <img src="cplus.png" alt="C++" /> <!-- Replace with your C++ icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="cplus-progress" style="width: 0%;" title="65% mastery"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill" onclick="increaseProgress('gdevelop-progress', 70)">
-            <img src="godot.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
-            <div class="progress">
-                <div class="progress-bar" id="gdevelop-progress" style="width: 0%;" title="70% mastery"></div>
+            <div class="skill" onclick="increaseProgress('gdevelop-progress', 70)">
+                <img src="godot.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
+                <div class="progress">
+                    <div class="progress-bar" id="gdevelop-progress" style="width: 0%;" title="70% mastery"></div>
+                </div>
             </div>
         </div>
     </div>
