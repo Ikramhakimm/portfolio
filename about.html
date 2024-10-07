@@ -1,109 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My GitHub Page - About</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
-            background-size: cover;
-            color: white;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            padding: 20px; /* Add padding to prevent content from touching the edges */
-            min-height: 100vh; /* Ensure it takes full height */
-            justify-content: flex-start; /* Align items at the top */
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
+    background-size: cover;
+    color: white;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding: 0; /* Remove padding */
+    min-height: 100vh; /* Ensure it takes full height */
+    justify-content: flex-start; /* Align items at the top */
+}
 
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
-            width: 100%;
-            position: sticky; /* Keep header fixed at the top */
-            top: 0; /* Sticky to the top */
-            z-index: 10; /* Ensure the header is above other content */
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
-        }
-
-        .content {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px; /* Limit width for better readability */
-            width: 100%; /* Full width for the content */
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>About Me</h1>
-    </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="content">
-        <h3>Hello!</h3>
-        <p>My name is [Your Name]. I am a [Your Profession] with a passion for [Your Interests].</p>
-        
-        <h3>Background</h3>
-        <p>Here is a brief overview of my background, experience, and interests.</p>
-        
-        <h3>Hobbies</h3>
-        <p>In my free time, I enjoy [Your Hobbies].</p>
-        
-        <h3>Goals</h3>
-        <p>My goals include [Your Goals].</p>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 My GitHub Page</p>
-    </footer>
-
-</body>
-</html>
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+    width: 100%;
+    position: sticky; /* Keep header fixed at the top */
+    top: 0; /* Sticky to the top */
+    z-index: 10; /* Ensure the header is above other content */
+    margin: 0; /* Ensure no margin */
+}
