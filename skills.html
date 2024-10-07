@@ -83,10 +83,26 @@
             border-radius: 10px;
             transition: transform 0.3s; /* Smooth scale transition */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            cursor: pointer; /* Change cursor to pointer */
         }
 
         .skill-card:hover {
             transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .progress-bar {
+            display: none; /* Initially hidden */
+            margin-top: 10px;
+            background-color: rgba(255, 255, 255, 0.2); /* Background for progress bar */
+            border-radius: 10px;
+            overflow: hidden; /* To hide overflow of inner progress */
+        }
+
+        .progress {
+            height: 20px; /* Height of the progress bar */
+            background-color: #4caf50; /* Green color for progress */
+            width: 0; /* Start with 0 width */
+            transition: width 0.5s; /* Smooth width transition */
         }
 
         footer {
@@ -118,18 +134,38 @@
         <h2>My Skills</h2>
         <p>Here are some of the key skills I have developed over the years:</p>
         <div class="skills-container">
-            <div class="skill-card">HTML & CSS</div>
-            <div class="skill-card">JavaScript</div>
-            <div class="skill-card">Git & GitHub</div>
-            <div class="skill-card">Python Programming</div>
-            <div class="skill-card">Unity 3D Development</div>
-            <div class="skill-card">Game Design and Development</div>
+            <div class="skill-card" data-skill="HTML & CSS" data-percentage="90">HTML & CSS</div>
+            <div class="skill-card" data-skill="JavaScript" data-percentage="70">JavaScript</div>
+            <div class="skill-card" data-skill="Git & GitHub" data-percentage="85">Git & GitHub</div>
+            <div class="skill-card" data-skill="Python Programming" data-percentage="75">Python Programming</div>
+            <div class="skill-card" data-skill="Unity 3D Development" data-percentage="70">Unity 3D Development</div>
+            <div class="skill-card" data-skill="Game Design and Development" data-percentage="80">Game Design and Development</div>
+        </div>
+        
+        <div class="progress-bar" id="progressBar">
+            <div class="progress" id="progress"></div>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2024 My GitHub Page</p>
     </footer>
+
+    <script>
+        // Get all skill cards
+        const skillCards = document.querySelectorAll('.skill-card');
+        const progressBar = document.getElementById('progressBar');
+        const progress = document.getElementById('progress');
+
+        // Add click event to each skill card
+        skillCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const percentage = card.getAttribute('data-percentage');
+                progress.style.width = percentage + '%'; // Set progress width based on percentage
+                progressBar.style.display = 'block'; // Show progress bar
+            });
+        });
+    </script>
 
 </body>
 </html>
