@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My GitHub Page - Projects</title>
+    <title>My GitHub Page - About</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,16 +14,15 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            justify-content: center; /* Center content vertically */
             min-height: 100vh; /* Ensure it takes full height */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Add fade-in animation */
+            opacity: 0; /* Start with hidden body for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
         }
 
-        header, nav, .content, footer {
-            opacity: 0; /* Start with opacity 0 for each section */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
         }
 
         header {
@@ -31,13 +30,15 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
-            animation-delay: 0.5s; /* Delay for header */
+        }
+
+        h1 {
+            margin: 0;
         }
 
         nav {
             text-align: center;
             margin: 20px 0;
-            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -54,49 +55,38 @@
         }
 
         .content {
-            text-align: center;
+            display: flex; /* Use flexbox for layout */
+            align-items: flex-start; /* Align items at the top */
+            justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px; /* Limit width for better readability */
-            animation-delay: 1.5s; /* Delay for content */
+            margin: 20px auto; /* Center the content with auto margins */
+            padding: 30px; /* Padding around the content */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
+            gap: 30px; /* Space between image and text */
+            max-width: 800px; /* Limit the width of content */
         }
 
-        .projects {
-            display: grid; /* Use grid layout for project images */
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            gap: 20px; /* Space between images */
-            margin: 20px;
-        }
-
-        .project-container {
-            text-align: center; /* Center text under each image */
-        }
-
-        .projects img {
-            width: 100%; /* Full width of the container */
-            height: 150px; /* Fixed height for uniformity */
-            object-fit: cover; /* Cover the container without stretching */
-            border-radius: 10%; /* Slightly round the corners */
+        img {
+            width: 220px; /* Set width for the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15%; /* Slightly round the corners */
+            display: block; /* Ensures image is centered */
+            margin: 0 auto; /* Center the image */
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.3s; /* Smooth scaling */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 0.5s forwards; /* Add fade-in animation */
         }
 
-        /* Keyframes for fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .projects img:hover {
+        img:hover {
             transform: scale(1.05); /* Scale image slightly on hover */
+        }
+
+        .info {
+            text-align: left; /* Left align text */
+            display: flex;
+            flex-direction: column; /* Stack the text vertically */
+            justify-content: flex-start; /* Align text to the top */
+            align-items: flex-start; /* Align text to the left */
         }
 
         footer {
@@ -104,9 +94,7 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
-            position: relative;
-            bottom: 0;
-            animation-delay: 2s; /* Delay for footer */
+            margin-top: auto; /* Ensure footer is at the bottom */
         }
 
         /* Fullscreen styles */
@@ -140,7 +128,7 @@
 <body>
 
     <header>
-        <h1>Projects</h1>
+        <h1>About Me</h1>
     </header>
 
     <nav>
@@ -153,24 +141,10 @@
     </nav>
 
     <div class="content">
-        <h3>My Projects</h3>
-        <div class="projects">
-            <div class="project-container">
-                <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 1 Description: Make a platformer game using Godot Engine.</p>
-            </div>
-            <div class="project-container">
-                <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 2 Description: Make lego character using Blender 3D.</p>
-            </div>
-            <div class="project-container">
-                <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 3 Description: Make Building using Blender 3D.</p>
-            </div>
-            <div class="project-container">
-                <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 4 Description: Make racing game using Unity 3D.</p>
-            </div>
+        <img src="myself.jpg" alt="About Me" id="aboutImage"> <!-- Replace with your image -->
+        <div class="info">
+            <h3>My Biodata</h3>
+            <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
         </div>
     </div>
 
@@ -180,25 +154,18 @@
 
     <!-- Fullscreen Image Overlay -->
     <div class="fullscreen" id="fullscreen">
-        <img src="" alt="Fullscreen Project" id="fullscreenImage"> <!-- Empty src to be filled by JS -->
+        <img src="myself.jpg" alt="About Me fullscreen" id="fullscreenImage"> <!-- Replace with your image -->
     </div>
 
     <script>
         // Get elements
-        const projectImages = document.querySelectorAll('.project-image');
+        const aboutImage = document.getElementById('aboutImage');
         const fullscreen = document.getElementById('fullscreen');
-        const fullscreenImage = document.getElementById('fullscreenImage');
 
-        // Add click event to project images
-        projectImages.forEach(img => {
-            img.onload = function() {
-                this.style.opacity = 1; // Set opacity to 1 when the image loads
-            };
-            img.onclick = function() {
-                fullscreenImage.src = this.src; // Set the src of the fullscreen image to the clicked image
-                fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
-            }
-        });
+        // Add click event to the about image
+        aboutImage.onclick = function() {
+            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
+        }
 
         // Close fullscreen when clicking on the overlay
         fullscreen.onclick = function() {
