@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact - My GitHub Page</title>
+    <title>My GitHub Page - Resume</title>
     <style>
-        /* Apply Google font */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: Arial, sans-serif;
+            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
+            background-size: cover;
+            color: white;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrollbars */
-            color: #fff;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Full viewport height */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            min-height: 100vh; /* Ensure it takes full height */
             opacity: 0; /* Start with hidden body for fade-in effect */
             animation: fadeIn 1s forwards; /* Fade-in animation */
         }
@@ -28,165 +27,110 @@
             }
         }
 
-        video {
-            position: absolute; /* Position video */
-            top: 50%;
-            left: 50%;
-            width: 100%; /* Cover the entire viewport */
-            height: auto; /* Maintain aspect ratio */
-            min-height: 100%;
-            min-width: 100%;
-            transform: translate(-50%, -50%); /* Center video */
-            z-index: -1; /* Send video to back */
-        }
-
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px 0; /* Header padding */
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            width: 100%;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay for header */
         }
 
-        header h1 {
+        h1 {
             margin: 0;
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
         }
 
         nav {
-            margin: 20px 0;
             text-align: center;
+            margin: 20px 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.2);
-            margin: 10px;
-            transition: background-color 0.3s, transform 0.2s;
+            margin: 0 15px;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
         }
 
         nav a:hover {
-            background-color: #fff;
-            color: #000;
-            transform: scale(1.1);
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center; /* Center logo horizontally */
-            margin: 20px 0; /* Spacing above and below logo */
-            opacity: 0; /* Start with hidden logo */
-            animation: logoFadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 0.5s; /* Delay for logo fade-in */
-        }
-
-        @keyframes logoFadeIn {
-            to {
-                opacity: 1; /* Final opacity */
-            }
+            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
         }
 
         .content {
-            padding: 20px; /* Reduced padding to move content up */
             text-align: center;
-            flex: 1; /* Allow this section to grow and take available space */
-            position: relative; /* Ensure content is above video */
-            z-index: 1; /* Position content above video */
-            overflow-y: auto; /* Enable vertical scrolling if needed */
-            opacity: 0; /* Start with hidden content */
-            animation: contentFadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 1s; /* Delay for content fade-in */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px; /* Limit width for better readability */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1.5s; /* Delay for content */
         }
 
-        @keyframes contentFadeIn {
-            to {
-                opacity: 1; /* Final opacity for content */
-            }
+        img {
+            width: 400px; /* Set larger width for the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10%; /* Slightly round the corners */
+            margin: 20px 0; /* Space around the image */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: transform 0.3s; /* Smooth scaling */
         }
 
-        .business-cards {
-            display: flex;
-            justify-content: center; /* Center business cards */
-            gap: 20px; /* Space between cards */
-            margin: 20px 0; /* Spacing above and below cards */
-        }
-
-        .business-card {
-            width: 200px; /* Set card width */
-            height: 300px; /* Set card height */
-            overflow: hidden; /* Prevent overflow */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
-        }
-
-        .business-card img {
-            width: 100%; /* Responsive image */
-            height: 100%; /* Responsive image */
-            object-fit: cover; /* Cover the container */
-        }
-
-        .contact-info {
-            margin: 20px 0; /* Spacing above and below contact info */
-            line-height: 1.8; /* Line height for readability */
-            font-size: 1.2rem; /* Font size */
-            color: #f4f4f4; /* Color for text */
+        img:hover {
+            transform: scale(1.05); /* Scale image slightly on hover */
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.8); /* Match header background transparency */
-            color: #fff;
-            padding: 20px 0; /* Match header padding */
             text-align: center;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
         }
 
-        footer p {
-            margin: 0;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* Fullscreen styles */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Initial opacity for fade effect */
+            transition: opacity 0.5s ease; /* Fade transition */
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
+        .fullscreen.show {
+            display: flex; /* Show the fullscreen overlay */
+            opacity: 1; /* Full opacity when shown */
+        }
 
-            nav a {
-                font-size: 1rem;
-                padding: 8px 15px;
-            }
-
-            .content h2 {
-                font-size: 2rem;
-            }
-
-            .content p {
-                font-size: 1rem;
-            }
-
-            .business-card {
-                width: 150px; /* Adjust card width for smaller screens */
-                height: 250px; /* Adjust card height for smaller screens */
-            }
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10%; /* Slightly round the corners */
         }
     </style>
 </head>
 <body>
 
-    <!-- Video Background -->
-    <video autoplay muted loop>
-        <source src="try.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
     <header>
-        <h1>Contact Me</h1>
+        <h1>Resume</h1>
     </header>
 
     <nav>
@@ -198,27 +142,51 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="content" id="contact">
-        <h2>Get in Touch</h2>
-        <div class="business-cards">
-            <div class="business-card">
-                <img src="business_card_1.png" alt="Business Card 1"> <!-- Replace with your first business card image -->
-            </div>
-            <div class="business-card">
-                <img src="business_card_2.png" alt="Business Card 2"> <!-- Replace with your second business card image -->
-            </div>
-        </div>
-        <div class="contact-info">
-            <p>Email: ikramhakim@example.com</p>
-            <p>Phone: +60 123 456 789</p>
-            <p>Location: Ipoh, Malaysia</p>
-        </div>
+    <div class="content">
+        <img src="resume.jpg" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
+        <img src="resume_extra.jpg" alt="resume extra" id="resumeExtraImage"> <!-- Replace with your second resume picture -->
+        
+        <h3>Education</h3>
+        <p>Your educational background here.</p>
+        
+        <h3>Experience</h3>
+        <p>Your work experience here.</p>
+        
+        <h3>Skills</h3>
+        <p>Your key skills here.</p>
     </div>
 
     <footer>
-        <p>&copy; 2024 Ikramhakimm Page</p>
+        <p>&copy; 2024 My GitHub Page</p>
     </footer>
+
+    <!-- Fullscreen Image Overlay -->
+    <div class="fullscreen" id="fullscreen">
+        <img src="resume.jpg" alt="resume fullscreen" id="fullscreenImage"> <!-- Replace with your resume picture -->
+    </div>
+
+    <script>
+        // Get elements
+        const resumeImage = document.getElementById('resumeImage');
+        const fullscreen = document.getElementById('fullscreen');
+
+        // Add click event to the resume image
+        resumeImage.onclick = function() {
+            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
+        }
+
+        // Add click event to the extra resume image
+        const resumeExtraImage = document.getElementById('resumeExtraImage');
+        resumeExtraImage.onclick = function() {
+            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
+            fullscreenImage.src = resumeExtraImage.src; // Change source to the extra resume image
+        }
+
+        // Close fullscreen when clicking on the overlay
+        fullscreen.onclick = function() {
+            fullscreen.classList.remove('show'); // Remove show class to hide the fullscreen overlay
+        }
+    </script>
 
 </body>
 </html>
-
