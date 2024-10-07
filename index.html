@@ -38,6 +38,15 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: relative; /* Allow positioning of logo */
+        }
+
+        header img {
+            position: absolute; /* Position logo */
+            top: 10px; /* Adjust top position */
+            left: 20px; /* Adjust left position */
+            height: 60px; /* Adjust logo height */
+            z-index: 1; /* Ensure logo is above video */
         }
 
         header h1 {
@@ -135,6 +144,7 @@
     </video>
 
     <header>
+        <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo image -->
         <h1>Welcome to My Portfolio Page</h1>
     </header>
 
