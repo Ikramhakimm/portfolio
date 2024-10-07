@@ -17,6 +17,13 @@
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
             min-height: 100vh; /* Ensure it takes full height */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Add fade-in animation */
+        }
+
+        header, nav, .content, footer {
+            opacity: 0; /* Start with opacity 0 for each section */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
         }
 
         header {
@@ -24,15 +31,13 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
-        }
-
-        h1 {
-            margin: 0;
+            animation-delay: 0.5s; /* Delay for header */
         }
 
         nav {
             text-align: center;
             margin: 20px 0;
+            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -55,6 +60,7 @@
             padding: 20px;
             border-radius: 10px;
             max-width: 600px; /* Limit width for better readability */
+            animation-delay: 1.5s; /* Delay for content */
         }
 
         .projects {
@@ -75,9 +81,8 @@
             border-radius: 10%; /* Slightly round the corners */
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.3s; /* Smooth scaling */
-            animation: fadeIn 0.5s ease-in; /* Add fade-in animation */
             opacity: 0; /* Start with opacity 0 */
-            animation-fill-mode: forwards; /* Keep the final state of the animation */
+            animation: fadeIn 0.5s forwards; /* Add fade-in animation */
         }
 
         /* Keyframes for fade-in animation */
@@ -101,6 +106,7 @@
             width: 100%;
             position: relative;
             bottom: 0;
+            animation-delay: 2s; /* Delay for footer */
         }
 
         /* Fullscreen styles */
