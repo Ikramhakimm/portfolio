@@ -125,25 +125,17 @@
                 left: -100px; /* Start off-screen */
                 transform: scaleX(1); /* Face right */
             }
-            25% {
+            50% {
                 left: calc(100% - 100px); /* Move to the right */
                 transform: scaleX(1); /* Face right */
             }
-            50% {
-                left: calc(100%); /* Move to the edge */
+            51% {
+                left: calc(100% - 100px); /* Stay at the right edge */
                 transform: scaleX(-1); /* Flip to face left instantly */
             }
-            51% {
-                left: calc(100%); /* Stay at the edge */
-                transform: scaleX(-1); /* Face left */
-            }
-            75% {
-                left: 0; /* Move back to the left */
-                transform: scaleX(1); /* Flip to face right instantly */
-            }
             100% {
-                left: -100px; /* Start off-screen again */
-                transform: scaleX(1); /* Face right */
+                left: -100px; /* Move back off-screen to the left */
+                transform: scaleX(-1); /* Face left */
             }
         }
 
