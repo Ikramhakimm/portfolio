@@ -186,69 +186,63 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-  <div class="content">
-    <h3>My Featured Projects</h3>
-
-    <!-- Add Carousel Code Here -->
-    <div class="carousel">
-      <div class="carousel-item active">
-        <img src="tryy.png" alt="Featured Project 1">
-        <div class="carousel-caption">
-          <h3>Platformer Game with Godot</h3>
-          <p>Brief description of Platformer Game using Godot Engine.</p>
+    <div class="content">
+        <h3>My Projects</h3>
+        <div class="projects" id="projectContainer">
+            <div class="project-container">
+                <a href="#lightbox1">
+                    <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Make a platformer game using Godot Engine.</p>
+            </div>
+            <div class="project-container">
+                <a href="#lightbox2">
+                    <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Make lego character using Blender 3D.</p>
+            </div>
+            <div class="project-container">
+                <a href="#lightbox3">
+                    <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Make Building using Blender 3D.</p>
+            </div>
+            <div class="project-container">
+                <a href="#lightbox4">
+                    <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Make racing game using Unity 3D.</p>
+            </div>
+            <div class="project-container hidden"> <!-- Hidden initially (for pagination) -->
+                <a href="#lightbox5">
+                    <img src="fullll.png" alt="Project 5" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Full view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox6">
+                    <img src="meja.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Table view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox7">
+                    <img src="posterr.png" alt="Project 7" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>Poster view of my booth.</p>
+            </div>
+            <div class="project-container hidden">
+                <a href="#lightbox8">
+                    <img src="ikramposter.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
+                </a>
+                <p>My poster.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="tryyy.png" alt="Featured Project 2">
-        <div class="carousel-caption">
-          <h3>Lego Character in Blender</h3>
-          <p>Brief description of creating a Lego character using Blender 3D.</p>
+        <div class="pagination">
+            <button id="prevPage">Previous</button>
+            <button id="nextPage">Next</button>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="tryyyyy.png" alt="Featured Project 3">
-        <div class="carousel-caption">
-          <h3>Racing Game in Unity</h3>
-          <p>Brief description of making a racing game using Unity 3D.</p>
-        </div>
-      </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-
-    <h3>My Projects</h3>
-    <div class="projects" id="projectContainer">
-        <div class="project-container">
-            <a href="#lightbox1">
-                <img src="tryy.png" alt="Project 1" class="project-image">
-            </a>
-            <p>Make a platformer game using Godot Engine.</p>
-        </div>
-        <div class="project-container">
-            <a href="#lightbox2">
-                <img src="tryyy.png" alt="Project 2" class="project-image">
-            </a>
-            <p>Make lego character using Blender 3D.</p>
-        </div>
-        <div class="project-container">
-            <a href="#lightbox3">
-                <img src="tryyyy.png" alt="Project 3" class="project-image">
-            </a>
-            <p>Make Building using Blender 3D.</p>
-        </div>
-        <div class="project-container">
-            <a href="#lightbox4">
-                <img src="tryyyyy.png" alt="Project 4" class="project-image">
-            </a>
-            <p>Make racing game using Unity 3D.</p>
-        </div>
-    </div>
-
-    <div class="pagination">
-        <button id="prevPage">Previous</button>
-        <button id="nextPage">Next</button>
-    </div>
-</div>
 
     <!-- Lightbox structure for each project -->
     <div id="lightbox1" class="lightbox">
