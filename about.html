@@ -116,7 +116,7 @@
             position: absolute;
             top: -20px; /* Position it above the footer */
             left: 0;
-            animation: moveCat 5s linear infinite; /* Animation to move cat */
+            animation: moveCat 10s linear infinite; /* Slower animation */
             width: 100px; /* Adjust width as needed */
         }
 
@@ -125,9 +125,17 @@
                 left: -100px; /* Start off-screen */
                 transform: scaleX(1); /* Face right */
             }
+            25% {
+                left: calc(100% - 100px); /* Move to the right */
+                transform: scaleX(1); /* Face right */
+            }
             50% {
-                left: calc(100% + 100px); /* Move to the right */
+                left: calc(100%); /* Move to the edge */
                 transform: scaleX(-1); /* Flip to face left */
+            }
+            75% {
+                left: 0; /* Move back to the left */
+                transform: scaleX(-1); /* Face left */
             }
             100% {
                 left: -100px; /* Start off-screen again */
