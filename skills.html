@@ -105,6 +105,13 @@
             transition: width 0.5s; /* Smooth width transition */
         }
 
+        .mastery-level {
+            display: none; /* Initially hidden */
+            font-size: 1.2em; /* Font size for mastery level */
+            margin-top: 10px; /* Space above the mastery level */
+            color: #4caf50; /* Color for mastery level text */
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -145,6 +152,7 @@
         <div class="progress-bar" id="progressBar">
             <div class="progress" id="progress"></div>
         </div>
+        <div class="mastery-level" id="masteryLevel">Mastery Level: 0%</div>
     </div>
 
     <footer>
@@ -156,6 +164,7 @@
         const skillCards = document.querySelectorAll('.skill-card');
         const progressBar = document.getElementById('progressBar');
         const progress = document.getElementById('progress');
+        const masteryLevel = document.getElementById('masteryLevel');
 
         // Add click event to each skill card
         skillCards.forEach(card => {
@@ -163,6 +172,8 @@
                 const percentage = card.getAttribute('data-percentage');
                 progress.style.width = percentage + '%'; // Set progress width based on percentage
                 progressBar.style.display = 'block'; // Show progress bar
+                masteryLevel.innerText = `Mastery Level: ${percentage}%`; // Update mastery level text
+                masteryLevel.style.display = 'block'; // Show mastery level text
             });
         });
     </script>
