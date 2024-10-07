@@ -165,14 +165,6 @@
         .hidden {
             display: none;
         }
-
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 20px;
-        }
     </style>
 </head>
 <body>
@@ -241,17 +233,16 @@
                 </a>
                 <p>My poster.</p>
             </div>
-            <!-- Centered kereteee image -->
-            <div class="project-container centered">
+            <!-- New project on 3rd page -->
+            <div class="project-container hidden">
                 <a href="#lightbox9">
                     <img src="kereteee.png" alt="Project 9" class="project-image">
                 </a>
                 <p>Current project</p>
             </div>
         </div>
-        <div class="pagination" id="paginationContainer">
+        <div class="pagination">
             <button id="prevPage">Previous</button>
-            <button id="nextPage">Next</button>
         </div>
     </div>
 
@@ -288,50 +279,43 @@
         <a href="#" class="close">&times;</a>
     </div>
     <div id="lightbox9" class="lightbox">
-        <img src="kereteee.png" alt="Full image 9">
+        <img src="newproject.png" alt="Full image 9">
         <a href="#" class="close">&times;</a>
     </div>
 
-    <script>
-        let currentPage = 0;
-        const projectsPerPage = 4;
-        const projectContainers = document.querySelectorAll('.project-container');
-        const prevButton = document.getElementById('prevPage');
-        const nextButton = document.getElementById('nextPage');
-        const paginationContainer = document.getElementById('paginationContainer');
+    <footer>
+        <p>&copy; 2024 My GitHub Page. All rights reserved.</p>
+    </footer>
 
-        function updateProjectVisibility() {
-            projectContainers.forEach((project, index) => {
-                if (index >= currentPage * projectsPerPage && index < (currentPage + 1) * projectsPerPage) {
+    <script>
+        const projectsPerPage = 4;
+        let currentPage = 1;
+
+        function showPage(page) {
+            const projects = document.querySelectorAll('.project-container');
+            const totalPages = Math.ceil(projects.length / projectsPerPage);
+
+            projects.forEach((project, index) => {
+                project.classList.add('hidden');
+                const start = (page - 1) * projectsPerPage;
+                const end = page * projectsPerPage;
+                if (index >= start && index < end) {
                     project.classList.remove('hidden');
-                } else {
-                    project.classList.add('hidden');
                 }
             });
 
-            // Hide pagination if showing the "kereteee" project
-            if (currentPage === 2) {
-                paginationContainer.style.display = 'none';
-            } else {
-                paginationContainer.style.display = 'flex';
-            }
+            document.getElementById('prevPage').disabled = page === 1;
         }
 
-        prevButton.addEventListener('click', () => {
-            if (currentPage > 0) {
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 1) {
                 currentPage--;
-                updateProjectVisibility();
+                showPage(currentPage);
             }
         });
 
-        nextButton.addEventListener('click', () => {
-            if (currentPage < Math.ceil(projectContainers.length / projectsPerPage) - 1) {
-                currentPage++;
-                updateProjectVisibility();
-            }
-        });
-
-        updateProjectVisibility();
+        showPage(currentPage);
     </script>
+
 </body>
 </html>
