@@ -6,169 +6,128 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My GitHub Page - Projects</title>
     <style>
+        /* Apply Google font */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
-            background-size: cover;
-            color: white;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: white;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            justify-content: center; /* Center content vertically */
-            min-height: 100vh; /* Ensure it takes full height */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Add fade-in animation */
-            cursor: url('custom-cursor.png'), auto; /* Custom cursor for entire page */
+            min-height: 100vh;
+            opacity: 0; /* Start with hidden body for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+            cursor: none; /* Hide default cursor */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
         }
 
         header, nav, .content, footer {
-            opacity: 0; /* Start with opacity 0 for each section */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            opacity: 0; /* Start with hidden elements for fade-in effect */
+            animation: fadeIn 1s forwards;
         }
 
         header {
-            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8); 
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            text-align: center;
+            animation-delay: 0.5s; 
             width: 100%;
-            animation-delay: 0.5s; /* Delay for header */
         }
 
         nav {
-            text-align: center;
             margin: 20px 0;
-            animation-delay: 1s; /* Delay for nav */
+            text-align: center;
+            animation-delay: 1s;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            margin: 0 15px;
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.1);
         }
 
         .content {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px; /* Limit width for better readability */
-            animation-delay: 1.5s; /* Delay for content */
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            animation-delay: 1.5s;
         }
 
+        footer {
+            background-color: rgba(0, 0, 0, 0.8); 
+            padding: 20px;
+            text-align: center;
+            animation-delay: 2s;
+            width: 100%;
+        }
+
+        /* Project styles */
         .projects {
-            display: grid; /* Use grid layout for project images */
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            gap: 20px; /* Space between images */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             margin: 20px;
         }
 
         .project-container {
-            text-align: center; /* Center text under each image */
+            text-align: center;
         }
 
         .projects img {
-            width: 100%; /* Full width of the container */
-            height: 150px; /* Fixed height for uniformity */
-            object-fit: cover; /* Cover the container without stretching */
-            border-radius: 10%; /* Slightly round the corners */
-            cursor: url('custom-cursor.png'), pointer; /* Custom cursor for project images */
-            transition: transform 0.3s; /* Smooth scaling */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 0.5s forwards; /* Add fade-in animation */
-        }
-
-        /* Keyframes for fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10%;
+            transition: transform 0.3s;
         }
 
         .projects img:hover {
-            transform: scale(1.05); /* Scale image slightly on hover */
+            transform: scale(1.05);
         }
 
-        /* Lightbox styles */
-        .lightbox {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 9999; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Black with slight opacity */
-            justify-content: center; /* Center image horizontally */
-            align-items: center; /* Center image vertically */
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox:target {
-            display: flex; /* Show the lightbox */
-        }
-
-        /* Close button styles */
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: black;
-            font-size: 30px;
-            padding: 5px 10px;
+        /* Custom cursor styles */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
-            text-decoration: none;
-            cursor: pointer;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.2s;
+            z-index: 9999; /* Ensure cursor is always on top */
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
-            width: 100%;
-            position: relative;
-            bottom: 0;
-            animation-delay: 2s; /* Delay for footer */
-        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
 
-        /* Pagination controls */
-        .pagination {
-            margin: 20px;
-        }
-
-        .pagination button {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 5px;
-            transition: background-color 0.3s;
-        }
-
-        .pagination button:hover {
-            background-color: rgba(255, 255, 255, 0.3); /* Hover effect for buttons */
-        }
-
-        .hidden {
-            display: none; /* Class to hide elements */
+            .projects {
+                grid-template-columns: 1fr; /* Make projects single column on smaller screens */
+            }
         }
     </style>
 </head>
@@ -188,135 +147,55 @@
     </nav>
 
     <div class="content">
-        <h3>My Projects</h3>
-        <div class="projects" id="projectContainer">
+        <h2>My Projects</h2>
+        <div class="projects">
             <div class="project-container">
-                <a href="#lightbox1">
-                    <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
-                </a>
+                <img src="tryy.png" alt="Project 1">
                 <p>Make a platformer game using Godot Engine.</p>
             </div>
             <div class="project-container">
-                <a href="#lightbox2">
-                    <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
-                </a>
+                <img src="tryyy.png" alt="Project 2">
                 <p>Make lego character using Blender 3D.</p>
             </div>
             <div class="project-container">
-                <a href="#lightbox3">
-                    <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
-                </a>
+                <img src="tryyyy.png" alt="Project 3">
                 <p>Make Building using Blender 3D.</p>
             </div>
             <div class="project-container">
-                <a href="#lightbox4">
-                    <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
-                </a>
+                <img src="tryyyyy.png" alt="Project 4">
                 <p>Make racing game using Unity 3D.</p>
             </div>
-            <div class="project-container hidden"> <!-- Hidden initially (for pagination) -->
-                <a href="#lightbox5">
-                    <img src="fullll.png" alt="Project 5" class="project-image"> <!-- Replace with your project image -->
-                </a>
-                <p>Full view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox6">
-                    <img src="meja.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
-                </a>
-                <p>Table view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox7">
-                    <img src="posterr.png" alt="Project 7" class="project-image"> <!-- Replace with your project image -->
-                </a>
-                <p>Poster view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox8">
-                    <img src="ikramposter.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
-                </a>
-                <p>My poster.</p>
-            </div>
         </div>
-        <div class="pagination">
-            <button id="prevPage">Previous</button>
-            <button id="nextPage">Next</button>
-        </div>
-    </div>
-
-    <!-- Lightbox structure for each project -->
-    <div id="lightbox1" class="lightbox">
-        <img src="tryy.png" alt="Full image 1">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox2" class="lightbox">
-        <img src="tryyy.png" alt="Full image 2">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox3" class="lightbox">
-        <img src="tryyyy.png" alt="Full image 3">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox4" class="lightbox">
-        <img src="tryyyyy.png" alt="Full image 4">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox5" class="lightbox">
-        <img src="fullll.png" alt="Full image 5">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox6" class="lightbox">
-        <img src="meja.png" alt="Full image 6">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox7" class="lightbox">
-        <img src="posterr.png" alt="Full image 7">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox8" class="lightbox">
-        <img src="ikramposter.png" alt="Full image 8">
-        <a href="#" class="close">&times;</a>
     </div>
 
     <footer>
         <p>&copy; 2024 My GitHub Page</p>
     </footer>
 
+    <!-- Custom cursor -->
     <script>
-        // JavaScript for pagination
-        const projects = document.querySelectorAll('.project-container');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        let currentPage = 1;
-        const itemsPerPage = 4;
+        // Create custom cursor element
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
 
-        function showPage(page) {
-            const start = (page - 1) * itemsPerPage;
-            const end = page * itemsPerPage;
-            projects.forEach((project, index) => {
-                project.classList.add('hidden');
-                if (index >= start && index < end) {
-                    project.classList.remove('hidden');
-                }
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Change cursor color on hover
+        const hoverableElements = document.querySelectorAll('nav a, img');
+        hoverableElements.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                cursor.style.backgroundColor = 'rgba(255, 255, 0, 0.8)'; // Change color on hover
             });
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
-            }
+            element.addEventListener('mouseout', () => {
+                cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'; // Reset color
+            });
         });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentPage < Math.ceil(projects.length / itemsPerPage)) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
-
-        showPage(currentPage); // Initialize the first page
     </script>
+
 </body>
 </html>
