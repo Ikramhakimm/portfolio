@@ -75,6 +75,7 @@
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 1s forwards; /* Apply fade-in animation */
             animation-delay: 1.5s; /* Delay for content */
+            position: relative; /* Relative positioning for absolute elements */
         }
 
         img {
@@ -97,6 +98,35 @@
             flex-direction: column; /* Stack the text vertically */
             justify-content: flex-start; /* Align text to the top */
             align-items: flex-start; /* Align text to the left */
+        }
+
+        .cat-container {
+            position: absolute; /* Position the cat container absolutely */
+            bottom: 20px; /* Position it above the bottom edge */
+            left: 0; /* Start from the left edge */
+            width: 100%; /* Full width to match the red line */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .walking-cat {
+            position: absolute; /* Position the cat absolutely */
+            width: 50px; /* Adjust the width as needed */
+            animation: moveCat 4s linear infinite; /* Move the cat */
+        }
+
+        @keyframes moveCat {
+            0% {
+                left: -50px; /* Start from the left outside of the view */
+                transform: scaleX(1); /* Normal orientation */
+            }
+            50% {
+                left: calc(100% - 50px); /* Move to the right edge */
+                transform: scaleX(-1); /* Flip horizontally */
+            }
+            100% {
+                left: -50px; /* Return to the start */
+                transform: scaleX(1); /* Normal orientation */
+            }
         }
 
         footer {
@@ -158,6 +188,9 @@
         <div class="info">
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
+        </div>
+        <div class="cat-container">
+            <img src="cat.gif" alt="Walking Cat" class="walking-cat"> <!-- Replace with your cat GIF -->
         </div>
     </div>
 
