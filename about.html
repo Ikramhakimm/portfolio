@@ -30,6 +30,9 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay for header */
         }
 
         h1 {
@@ -39,6 +42,9 @@
         nav {
             text-align: center;
             margin: 20px 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -65,6 +71,9 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
             gap: 30px; /* Space between image and text */
             max-width: 800px; /* Limit the width of content */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1.5s; /* Delay for content */
         }
 
         img {
@@ -95,6 +104,9 @@
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
             margin-top: auto; /* Ensure footer is at the bottom */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
         }
 
         /* Fullscreen styles */
