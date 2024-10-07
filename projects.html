@@ -6,11 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My GitHub Page - Projects</title>
     <style>
-        /* Add the custom Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: Arial, sans-serif;
             background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
             background-size: cover;
             color: white;
@@ -22,7 +19,6 @@
             min-height: 100vh; /* Ensure it takes full height */
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 1s forwards; /* Add fade-in animation */
-            cursor: none; /* Hide default cursor */
         }
 
         header, nav, .content, footer {
@@ -49,13 +45,12 @@
             text-decoration: none;
             margin: 0 15px;
             padding: 10px 15px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s;
             border-radius: 5px;
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
-            color: yellow; /* Change text to yellow */
         }
 
         .content {
@@ -102,7 +97,6 @@
 
         .projects img:hover {
             transform: scale(1.05); /* Scale image slightly on hover */
-            outline: 2px solid yellow; /* Add yellow outline */
         }
 
         /* Lightbox styles */
@@ -175,19 +169,6 @@
         .hidden {
             display: none; /* Class to hide elements */
         }
-
-        /* Custom cursor styles */
-        .cursor {
-            width: 20px; /* Width of custom cursor */
-            height: 20px; /* Height of custom cursor */
-            background-color: rgba(255, 255, 255, 0.7); /* Color of custom cursor */
-            border-radius: 50%; /* Make it circular */
-            position: fixed; /* Fixed position */
-            pointer-events: none; /* Prevent it from blocking clicks */
-            transform: translate(-50%, -50%); /* Center the cursor */
-            transition: background-color 0.2s; /* Transition effect */
-            z-index: 9999; /* Ensure it's on top of everything */
-        }
     </style>
 </head>
 <body>
@@ -242,7 +223,7 @@
                 <a href="#lightbox6">
                     <img src="meja.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
                 </a>
-                <p>View from my booth table.</p>
+                <p>Table view of my booth.</p>
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox7">
@@ -252,119 +233,92 @@
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox8">
-                    <img src="front.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
+                    <img src="ikramposter.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
                 </a>
-                <p>Front view of my booth.</p>
+                <p>My poster.</p>
             </div>
         </div>
-
-        <!-- Pagination controls -->
         <div class="pagination">
-            <button id="prevBtn" onclick="prevPage()">Previous</button>
-            <button id="nextBtn" onclick="nextPage()">Next</button>
+            <button id="prevPage">Previous</button>
+            <button id="nextPage">Next</button>
         </div>
     </div>
 
-    <!-- Lightbox modals for each project -->
+    <!-- Lightbox structure for each project -->
     <div id="lightbox1" class="lightbox">
+        <img src="tryy.png" alt="Full image 1">
         <a href="#" class="close">&times;</a>
-        <img src="tryy.png" alt="Project 1"> <!-- Replace with your project image -->
     </div>
-
     <div id="lightbox2" class="lightbox">
+        <img src="tryyy.png" alt="Full image 2">
         <a href="#" class="close">&times;</a>
-        <img src="tryyy.png" alt="Project 2"> <!-- Replace with your project image -->
     </div>
-
     <div id="lightbox3" class="lightbox">
+        <img src="tryyyy.png" alt="Full image 3">
         <a href="#" class="close">&times;</a>
-        <img src="tryyyy.png" alt="Project 3"> <!-- Replace with your project image -->
     </div>
-
     <div id="lightbox4" class="lightbox">
+        <img src="tryyyyy.png" alt="Full image 4">
         <a href="#" class="close">&times;</a>
-        <img src="tryyyyy.png" alt="Project 4"> <!-- Replace with your project image -->
     </div>
-
     <div id="lightbox5" class="lightbox">
+        <img src="fullll.png" alt="Full image 5">
         <a href="#" class="close">&times;</a>
-        <img src="fullll.png" alt="Project 5"> <!-- Replace with your project image -->
     </div>
-
     <div id="lightbox6" class="lightbox">
-        <a href="#" class="close">&times;"></a>
-        <img src="meja.png" alt="Project 6"> <!-- Replace with your project image -->
+        <img src="meja.png" alt="Full image 6">
+        <a href="#" class="close">&times;</a>
     </div>
-
     <div id="lightbox7" class="lightbox">
-        <a href="#" class="close">&times;"></a>
-        <img src="posterr.png" alt="Project 7"> <!-- Replace with your project image -->
+        <img src="posterr.png" alt="Full image 7">
+        <a href="#" class="close">&times;</a>
     </div>
-
     <div id="lightbox8" class="lightbox">
-        <a href="#" class="close">&times;"></a>
-        <img src="front.png" alt="Project 8"> <!-- Replace with your project image -->
+        <img src="ikramposter.png" alt="Full image 8">
+        <a href="#" class="close">&times;</a>
     </div>
 
     <footer>
-        <p>2023 © My GitHub Page</p>
+        <p>&copy; 2024 My GitHub Page</p>
     </footer>
 
-    <!-- Pagination script -->
     <script>
-        const projectContainers = document.querySelectorAll('.project-container');
-        const projectsPerPage = 4;
+        // Pagination logic
+        const projects = document.querySelectorAll('.project-container');
+        const projectsPerPage = 4; // Display 4 projects per page
         let currentPage = 0;
 
-        function showPage(page) {
-            const startIndex = page * projectsPerPage;
-            const endIndex = startIndex + projectsPerPage;
-
-            projectContainers.forEach((container, index) => {
-                if (index >= startIndex && index < endIndex) {
-                    container.classList.remove('hidden');
-                } else {
-                    container.classList.add('hidden');
-                }
+        function updateProjects() {
+            projects.forEach((project, index) => {
+                project.classList.toggle('hidden', Math.floor(index / projectsPerPage) !== currentPage);
             });
-
-            // Hide/show pagination buttons based on the current page
-            document.getElementById('prevBtn').style.display = page === 0 ? 'none' : 'inline-block';
-            document.getElementById('nextBtn').style.display = endIndex >= projectContainers.length ? 'none' : 'inline-block';
         }
 
-        function nextPage() {
-            currentPage++;
-            showPage(currentPage);
-        }
-
-        function prevPage() {
-            currentPage--;
-            showPage(currentPage);
-        }
-
-        // Initialize the page
-        showPage(0);
-
-        // Custom cursor script
-        const cursor = document.createElement('div');
-        cursor.classList.add('cursor');
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.pageX + 'px';
-            cursor.style.top = e.pageY + 'px';
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < Math.floor(projects.length / projectsPerPage)) {
+                currentPage++;
+                updateProjects();
+            }
         });
 
-        // Change cursor color on hover (nav links, images)
-        document.querySelectorAll('a, button, img').forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.backgroundColor = 'yellow';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                updateProjects();
+            }
+        });
+
+        updateProjects(); // Initialize project display
+
+        // Lightbox closing on outside click
+        document.querySelectorAll('.lightbox').forEach(lightbox => {
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox || event.target.classList.contains('close')) {
+                    window.location.hash = ''; // Remove hash to close the lightbox
+                }
             });
         });
     </script>
+
 </body>
 </html>
