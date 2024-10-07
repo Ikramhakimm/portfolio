@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .showcase {
+            text-align: center;
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="showcase">
+    <h2>3D Showcase</h2>
+    <div class="showcase-container">
+        <canvas id="myCanvas"></canvas>
+        <p>3D model loaded from Blender.</p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.rawgit.com/mrdoob/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myCanvas')});
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const loader = new THREE.GLTFLoader();
+    loader.load('path/to/your/model.glb', function(gltf) {
+        scene.add(gltf.scene);
+        gltf.scene.position.set(0, 0, 0);
+        gltf.scene.rotation.set(0, Math.PI, 0); // Adjust rotation if needed
+    }, undefined, function(error) {
+        console.error(error);
+    });
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    animate();
+</script>
+
+</body>
+</html>
 
