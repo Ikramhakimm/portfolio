@@ -3,47 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Showcase</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My GitHub Page - Showcase</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: url('peakpx.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: white;
             margin: 0;
-            background: #000;
-            color: #fff;
             display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            align-items: center; /* Center content */
+            flex-direction: column;
+            min-height: 100vh; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
         }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; 
+            }
+        }
+
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            width: 100%;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); 
+            width: 100%;
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            animation-delay: 0.5s; 
         }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            animation-delay: 1s; 
+        }
+
         nav a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
             padding: 10px 15px;
             transition: background-color 0.3s;
+            border-radius: 5px;
         }
+
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2); 
         }
+
         .showcase {
-            text-align: center;
-            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            margin: 20px auto; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+            gap: 30px; 
+            max-width: 800px; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            animation-delay: 1.5s; 
         }
-        canvas {
+
+        .showcase-item {
+            background-color: rgba(255, 255, 255, 0.1); 
+            padding: 15px; 
+            border-radius: 10px; 
+            text-align: center; 
+            width: 220px; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            animation-delay: 2s; 
+        }
+
+        .showcase-item img {
+            width: 100%; 
+            height: auto; 
+            border-radius: 10%; 
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); 
             width: 100%;
-            height: auto;
-            max-width: 800px; /* Max width for the canvas */
+            margin-top: auto; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            animation-delay: 2.5s; 
         }
     </style>
 </head>
 <body>
 
-<header>
+    <header>
+        <h1>Showcase</h1>
+    </header>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -52,44 +119,22 @@
         <a href="skills.html">Skills</a>
         <a href="contact.html">Contact</a>
     </nav>
-</header>
 
-<div class="showcase">
-    <h2>3D Showcase</h2>
-    <div class="showcase-container">
-        <canvas id="myCanvas"></canvas>
-        <p>3D model loaded from Blender.</p>
+    <div class="showcase">
+        <div class="showcase-item">
+            <img src="path/to/image1.jpg" alt="Showcase Project 1">
+            <p>Brief description of Showcase Project 1.</p>
+        </div>
+        <div class="showcase-item">
+            <img src="path/to/image2.jpg" alt="Showcase Project 2">
+            <p>Brief description of Showcase Project 2.</p>
+        </div>
+        <!-- Add more showcase items as needed -->
     </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.rawgit.com/mrdoob/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
-<script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myCanvas')});
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    const loader = new THREE.GLTFLoader();
-    loader.load('path/to/your/model.glb', function(gltf) {
-        scene.add(gltf.scene);
-        gltf.scene.position.set(0, 0, 0);
-        gltf.scene.rotation.set(0, Math.PI, 0); // Adjust rotation if needed
-    }, undefined, function(error) {
-        console.error(error);
-    });
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-    }
-
-    animate();
-</script>
+    <footer>
+        <p>&copy; 2024 Ikram Hakim</p>
+    </footer>
 
 </body>
 </html>
