@@ -49,12 +49,13 @@
             text-decoration: none;
             margin: 0 15px;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
             border-radius: 5px;
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+            color: yellow; /* Change text to yellow */
         }
 
         .content {
@@ -101,6 +102,7 @@
 
         .projects img:hover {
             transform: scale(1.05); /* Scale image slightly on hover */
+            outline: 2px solid yellow; /* Add yellow outline */
         }
 
         /* Lightbox styles */
@@ -184,6 +186,7 @@
             pointer-events: none; /* Prevent it from blocking clicks */
             transform: translate(-50%, -50%); /* Center the cursor */
             transition: background-color 0.2s; /* Transition effect */
+            z-index: 9999; /* Ensure it's on top of everything */
         }
     </style>
 </head>
@@ -239,7 +242,7 @@
                 <a href="#lightbox6">
                     <img src="meja.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
                 </a>
-                <p>Table view of my booth.</p>
+                <p>View from my booth table.</p>
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox7">
@@ -289,17 +292,17 @@
     </div>
 
     <div id="lightbox6" class="lightbox">
-        <a href="#" class="close">&times;</a>
+        <a href="#" class="close">&times;"></a>
         <img src="meja.png" alt="Project 6"> <!-- Replace with your project image -->
     </div>
 
     <div id="lightbox7" class="lightbox">
-        <a href="#" class="close">&times;</a>
+        <a href="#" class="close">&times;"></a>
         <img src="posterr.png" alt="Project 7"> <!-- Replace with your project image -->
     </div>
 
     <div id="lightbox8" class="lightbox">
-        <a href="#" class="close">&times;</a>
+        <a href="#" class="close">&times;"></a>
         <img src="front.png" alt="Project 8"> <!-- Replace with your project image -->
     </div>
 
@@ -353,10 +356,10 @@
             cursor.style.top = e.pageY + 'px';
         });
 
-        // Change cursor color on hover
-        document.querySelectorAll('a, button').forEach((el) => {
+        // Change cursor color on hover (nav links, images)
+        document.querySelectorAll('a, button, img').forEach((el) => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                cursor.style.backgroundColor = 'yellow';
             });
             el.addEventListener('mouseleave', () => {
                 cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
