@@ -12,16 +12,21 @@
             background-size: cover;
             color: white;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         header {
             text-align: center;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for header */
+            width: 100%;
         }
 
         h1 {
             margin: 0;
+            font-size: 2.5em; /* Larger font for the title */
         }
 
         nav {
@@ -34,12 +39,14 @@
             text-decoration: none;
             margin: 0 15px;
             padding: 10px 15px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
             border-radius: 5px;
+            font-weight: bold;
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+            transform: scale(1.05); /* Slightly scale up on hover */
         }
 
         .content {
@@ -48,23 +55,38 @@
             background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black for content */
             margin: 20px;
             border-radius: 10px;
+            width: 90%; /* Make it responsive */
+            max-width: 800px; /* Limit maximum width */
         }
 
         h2 {
             margin-top: 0;
+            font-size: 2em; /* Larger font for subheading */
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            color: white;
-        }
-
-        li {
-            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background for skills */
+        p {
             margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 1.2em; /* Increase font size */
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+            gap: 20px; /* Space between cards */
+            padding: 20px 0;
+        }
+
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background for skills */
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s; /* Smooth scale transition */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
         }
 
         footer {
@@ -95,14 +117,14 @@
     <div class="content">
         <h2>My Skills</h2>
         <p>Here are some of the key skills I have developed over the years:</p>
-        <ul>
-            <li>HTML & CSS</li>
-            <li>JavaScript</li>
-            <li>Git & GitHub</li>
-            <li>Python Programming</li>
-            <li>Unity 3D Development</li>
-            <li>Game Design and Development</li>
-        </ul>
+        <div class="skills-container">
+            <div class="skill-card">HTML & CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Git & GitHub</div>
+            <div class="skill-card">Python Programming</div>
+            <div class="skill-card">Unity 3D Development</div>
+            <div class="skill-card">Game Design and Development</div>
+        </div>
     </div>
 
     <footer>
