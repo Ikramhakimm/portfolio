@@ -122,6 +122,25 @@
             display: flex; /* Show the lightbox */
         }
 
+        .lightbox:target .close {
+            display: block;
+        }
+
+        /* Close button styles */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+            font-size: 30px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: none; /* Initially hidden */
+            cursor: pointer;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -212,15 +231,19 @@
 
     <!-- Lightbox sections -->
     <div id="lightbox1" class="lightbox">
+        <a href="#" class="close">&times;</a>
         <img src="tryy.png" alt="Project 1 Fullscreen">
     </div>
     <div id="lightbox2" class="lightbox">
+        <a href="#" class="close">&times;</a>
         <img src="tryyy.png" alt="Project 2 Fullscreen">
     </div>
     <div id="lightbox3" class="lightbox">
+        <a href="#" class="close">&times;</a>
         <img src="tryyyy.png" alt="Project 3 Fullscreen">
     </div>
     <div id="lightbox4" class="lightbox">
+        <a href="#" class="close">&times;</a>
         <img src="tryyyyy.png" alt="Project 4 Fullscreen">
     </div>
 
