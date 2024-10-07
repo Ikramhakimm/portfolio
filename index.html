@@ -13,12 +13,11 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevent scrollbars */
+            overflow-x: hidden; /* Prevent horizontal scrollbars */
             color: #fff;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            position: relative; /* For positioning video */
+            min-height: 100vh; /* Full viewport height */
         }
 
         video {
@@ -35,18 +34,9 @@
 
         header {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px 0;
+            padding: 20px 0; /* Header padding */
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            position: relative; /* Allow positioning of logo */
-        }
-
-        header img {
-            position: absolute; /* Position logo */
-            top: 10px; /* Adjust top position */
-            left: 20px; /* Adjust left position */
-            height: 60px; /* Adjust logo height */
-            z-index: 1; /* Ensure logo is above video */
         }
 
         header h1 {
@@ -77,17 +67,29 @@
             transform: scale(1.1);
         }
 
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Center logo horizontally */
+            margin: 20px 0; /* Spacing above and below logo */
+        }
+
+        .logo-container img {
+            height: 350px; /* Increase logo height */
+            filter: brightness(0); /* Make logo black */
+        }
+
         .content {
-            padding: 50px 20px;
+            padding: 20px; /* Reduced padding to move content up */
             text-align: center;
-            flex: 1;
+            flex: 1; /* Allow this section to grow and take available space */
             position: relative; /* Ensure content is above video */
             z-index: 1; /* Position content above video */
+            overflow-y: auto; /* Enable vertical scrolling if needed */
         }
 
         .content h2 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Adjusted margin */
             color: #fff;
         }
 
@@ -100,14 +102,11 @@
         }
 
         footer {
+            background-color: rgba(0, 0, 0, 0.8); /* Match header background transparency */
+            color: #fff;
+            padding: 20px 0; /* Match header padding */
             text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
-            width: 100%;
-            margin-top: auto; /* Ensure footer is at the bottom */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 2s; /* Delay for footer */
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
         }
 
         footer p {
@@ -135,6 +134,10 @@
             .content p {
                 font-size: 1rem;
             }
+
+            .logo-container img {
+                height: 250px; /* Adjust logo height for smaller screens */
+            }
         }
     </style>
 </head>
@@ -147,7 +150,6 @@
     </video>
 
     <header>
-        <img src="loggo.png" alt="Logo"> <!-- Replace with your logo image -->
         <h1>Welcome to My Portfolio Page</h1>
     </header>
 
@@ -160,13 +162,18 @@
         <a href="contact.html">Contact</a>
     </nav>
 
+    <!-- Logo Container -->
+    <div class="logo-container">
+        <img src="loggo.png" alt="Logo"> <!-- Replace with your logo image -->
+    </div>
+
     <div class="content" id="home">
         <h2>About This Page</h2>
-        <p>Hi, I'm Ikram Hakim, a passionate game designer and developer with a focus on creating engaging and educational games.</p>
+        <p>Hi, I'm Ikramhakim, a passionate game designer and developer with a focus on creating engaging and educational games.</p>
     </div>
 
     <footer>
-        <p>&copy; 2024 Ikram Hakim</p>
+        <p>&copy; 2024 Ikramhakimm Page</p>
     </footer>
 
 </body>
