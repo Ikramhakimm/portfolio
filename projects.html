@@ -64,9 +64,14 @@
             margin: 20px;
         }
 
+        .project-container {
+            text-align: center; /* Center text under each image */
+        }
+
         .projects img {
             width: 100%; /* Full width of the container */
-            height: auto; /* Maintain aspect ratio */
+            height: 150px; /* Fixed height for uniformity */
+            object-fit: cover; /* Cover the container without stretching */
             border-radius: 10%; /* Slightly round the corners */
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.3s; /* Smooth scaling */
@@ -131,10 +136,22 @@
     <div class="content">
         <h3>My Projects</h3>
         <div class="projects">
-            <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
-            <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
-            <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
-            <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+            <div class="project-container">
+                <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
+                <p>Project 1 Description: A brief overview of what this project entails.</p>
+            </div>
+            <div class="project-container">
+                <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
+                <p>Project 2 Description: A brief overview of what this project entails.</p>
+            </div>
+            <div class="project-container">
+                <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
+                <p>Project 3 Description: A brief overview of what this project entails.</p>
+            </div>
+            <div class="project-container">
+                <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+                <p>Project 4 Description: A brief overview of what this project entails.</p>
+            </div>
         </div>
     </div>
 
@@ -169,4 +186,3 @@
 
 </body>
 </html>
-
