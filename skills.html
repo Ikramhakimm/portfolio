@@ -56,20 +56,22 @@
 
         .skills-container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Allows wrapping to the next line */
+            flex-direction: column; /* Stack skills vertically */
+            align-items: flex-start; /* Align items to the left */
+            margin: 0 10%; /* Center content with some margin */
         }
 
         .skill {
             display: flex;
-            flex-direction: column; /* Stack the icon and progress bar */
-            align-items: center;
-            margin: 15px;
+            justify-content: space-between; /* Space between icon and progress */
+            align-items: center; /* Center items vertically */
+            width: 100%; /* Full width for each skill */
+            margin: 15px 0; /* Space between skills */
             cursor: pointer; /* Change cursor to pointer for clickability */
         }
 
         .skill img {
-            width: 60px; /* Adjust the size of the skill icons */
+            width: 50px; /* Adjust the size of the skill icons */
             height: auto;
             transition: transform 0.3s; /* Add a hover animation */
         }
@@ -83,7 +85,8 @@
             border-radius: 5px;
             height: 20px;
             width: 100%;
-            margin-top: 5px; /* Space between icon and progress bar */
+            margin-left: 20px; /* Space between icon and progress bar */
+            flex-grow: 1; /* Allow progress bar to grow */
         }
 
         .progress-bar {
