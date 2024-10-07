@@ -169,13 +169,6 @@
         .hidden {
             display: none; /* Class to hide elements */
         }
-
-        /* Three.js container */
-        #threejs-container {
-            width: 600px;
-            height: 400px;
-            display: none; /* Hidden initially */
-        }
     </style>
 </head>
 <body>
@@ -197,61 +190,135 @@
         <h3>My Projects</h3>
         <div class="projects" id="projectContainer">
             <div class="project-container">
-                <a href="#" onclick="show3DModel('IKARAMMM.glb')">
-                    <img src="tryy.png" alt="Project 1" class="project-image">
+                <a href="#lightbox1">
+                    <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Make a platformer game using Godot Engine.</p>
             </div>
             <div class="project-container">
                 <a href="#lightbox2">
-                    <img src="tryyy.png" alt="Project 2" class="project-image">
+                    <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Make lego character using Blender 3D.</p>
             </div>
             <div class="project-container">
                 <a href="#lightbox3">
-                    <img src="tryyyy.png" alt="Project 3" class="project-image">
+                    <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Make Building using Blender 3D.</p>
             </div>
             <div class="project-container">
                 <a href="#lightbox4">
-                    <img src="tryyyyy.png" alt="Project 4" class="project-image">
+                    <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Make racing game using Unity 3D.</p>
             </div>
-            <div class="project-container hidden">
+            <div class="project-container hidden"> <!-- Hidden initially (for pagination) -->
                 <a href="#lightbox5">
-                    <img src="fullll.png" alt="Project 5" class="project-image">
+                    <img src="fullll.png" alt="Project 5" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Full view of my booth.</p>
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox6">
-                    <img src="meja.png" alt="Project 6" class="project-image">
+                    <img src="meja.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Table view of my booth.</p>
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox7">
-                    <img src="posterr.png" alt="Project 7" class="project-image">
+                    <img src="posterr.png" alt="Project 7" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>Poster view of my booth.</p>
             </div>
             <div class="project-container hidden">
                 <a href="#lightbox8">
-                    <img src="ikramposter.png" alt="Project 8" class="project-image">
+                    <img src="ikramposter.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
                 </a>
                 <p>My poster.</p>
             </div>
         </div>
-        
-        <div id="threejs-container"></div> <!-- Three.js container -->
-
         <div class="pagination">
             <button id="prevPage">Previous</button>
             <button id="nextPage">Next</button>
         </div>
     </div>
 
-    <!-- Lightbox structure for each
+    <!-- Lightbox structure for each project -->
+    <div id="lightbox1" class="lightbox">
+        <img src="tryy.png" alt="Full image 1">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox2" class="lightbox">
+        <img src="tryyy.png" alt="Full image 2">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox3" class="lightbox">
+        <img src="tryyyy.png" alt="Full image 3">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox4" class="lightbox">
+        <img src="tryyyyy.png" alt="Full image 4">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox5" class="lightbox">
+        <img src="fullll.png" alt="Full image 5">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox6" class="lightbox">
+        <img src="meja.png" alt="Full image 6">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox7" class="lightbox">
+        <img src="posterr.png" alt="Full image 7">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox8" class="lightbox">
+        <img src="ikramposter.png" alt="Full image 8">
+        <a href="#" class="close">&times;</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My GitHub Page</p>
+    </footer>
+
+    <script>
+        // Pagination logic
+        const projects = document.querySelectorAll('.project-container');
+        const projectsPerPage = 4; // Display 4 projects per page
+        let currentPage = 0;
+
+        function updateProjects() {
+            projects.forEach((project, index) => {
+                project.classList.toggle('hidden', Math.floor(index / projectsPerPage) !== currentPage);
+            });
+        }
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < Math.floor(projects.length / projectsPerPage)) {
+                currentPage++;
+                updateProjects();
+            }
+        });
+
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                updateProjects();
+            }
+        });
+
+        updateProjects(); // Initialize project display
+
+        // Lightbox closing on outside click
+        document.querySelectorAll('.lightbox').forEach(lightbox => {
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox || event.target.classList.contains('close')) {
+                    window.location.hash = ''; // Remove hash to close the lightbox
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
