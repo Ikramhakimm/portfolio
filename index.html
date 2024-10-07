@@ -19,7 +19,7 @@
             flex-direction: column;
             min-height: 100vh; /* Full viewport height */
             opacity: 0; /* Start with hidden body for fade-in effect */
-            animation: fadeIn 1s forwards; /* Fade-in animation for body */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
         }
 
         @keyframes fadeIn {
@@ -29,12 +29,14 @@
         }
 
         video {
-            position: fixed; /* Fixed position to keep it in place */
-            top: 0;
-            left: 0;
+            position: absolute; /* Position video */
+            top: 50%;
+            left: 50%;
             width: 100%; /* Cover the entire viewport */
-            height: 100%; /* Set height to 100% of viewport */
-            object-fit: cover; /* Cover the area while maintaining aspect ratio */
+            height: auto; /* Maintain aspect ratio */
+            min-height: 100%;
+            min-width: 100%;
+            transform: translate(-50%, -50%); /* Center video */
             z-index: -1; /* Send video to back */
         }
 
@@ -43,9 +45,6 @@
             padding: 20px 0; /* Header padding */
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 0.5s; /* Delay for header */
         }
 
         header h1 {
@@ -58,9 +57,6 @@
         nav {
             margin: 20px 0;
             text-align: center;
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -83,6 +79,15 @@
             display: flex;
             justify-content: center; /* Center logo horizontally */
             margin: 20px 0; /* Spacing above and below logo */
+            opacity: 0; /* Start with hidden logo */
+            animation: logoFadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay for logo fade-in */
+        }
+
+        @keyframes logoFadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
         }
 
         .logo-container img {
@@ -97,10 +102,15 @@
             position: relative; /* Ensure content is above video */
             z-index: 1; /* Position content above video */
             overflow-y: auto; /* Enable vertical scrolling if needed */
-            margin-top: 10px; /* Reduced margin to bring content closer to the logo */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 1.5s; /* Delay for content */
+            opacity: 0; /* Start with hidden content */
+            animation: contentFadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1s; /* Delay for content fade-in */
+        }
+
+        @keyframes contentFadeIn {
+            to {
+                opacity: 1; /* Final opacity for content */
+            }
         }
 
         .content h2 {
@@ -118,14 +128,11 @@
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.8); /* Transparent black for footer */
+            background-color: rgba(0, 0, 0, 0.8); /* Match header background transparency */
             color: #fff;
             padding: 20px 0; /* Match header padding */
             text-align: center;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 2s; /* Delay for footer */
         }
 
         footer p {
