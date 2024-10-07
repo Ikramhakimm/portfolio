@@ -125,6 +125,17 @@
             max-height: 90%;
             border-radius: 10%; /* Slightly round the corners */
         }
+
+        .social-media {
+            display: flex;
+            align-items: center; /* Vertically center items */
+        }
+
+        .social-media img {
+            width: 30px; /* Adjust size of logo */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px; /* Space between logo and text */
+        }
     </style>
 </head>
 <body>
@@ -149,11 +160,12 @@
         <h3>Contact</h3>
         <p>Call: <a href="tel:0138255756" style="color: white;">0138255756</a></p>
         
-        <!-- Instagram Logo -->
-        <p>
-            Instagram: <a href="https://www.instagram.com/ikramhkim" target="_blank" style="color: white;">
-                <img src="instagram-logo.png" alt="Instagram Logo" style="width: 30px; height: auto; vertical-align: middle;">
+        <!-- Instagram Logo with Username -->
+        <p class="social-media">
+            <a href="https://www.instagram.com/ikramhkim" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram Logo"> <!-- Replace with the actual logo path -->
             </a>
+            <span style="color: white;">ikramhkim</span>
         </p>
         
         <p>Email: <a href="mailto:ikramhakim013@gmail.com" style="color: white;">ikramhakim013@gmail.com</a></p>
