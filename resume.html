@@ -144,7 +144,6 @@
 
     <div class="content">
         <img src="resume.jpg" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
-        <img src="resume_extra.jpg" alt="resume extra" id="resumeExtraImage"> <!-- Replace with your second resume picture -->
         
         <h3>Education</h3>
         <p>Your educational background here.</p>
@@ -173,13 +172,6 @@
         // Add click event to the resume image
         resumeImage.onclick = function() {
             fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
-        }
-
-        // Add click event to the extra resume image
-        const resumeExtraImage = document.getElementById('resumeExtraImage');
-        resumeExtraImage.onclick = function() {
-            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
-            fullscreenImage.src = resumeExtraImage.src; // Change source to the extra resume image
         }
 
         // Close fullscreen when clicking on the overlay
