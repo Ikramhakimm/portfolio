@@ -48,7 +48,7 @@
 
         .content {
             display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center vertically */
+            align-items: flex-start; /* Align items at the top */
             justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px;
@@ -60,7 +60,6 @@
             margin-left: auto;
             margin-right: auto;
             flex-grow: 1; /* Allow content to grow and push footer down */
-            text-align: center; /* Center text within the content */
         }
 
         img {
@@ -70,11 +69,11 @@
         }
 
         .info {
-            text-align: left; /* Center text to match image */
+            text-align: left; /* Left align text */
             display: flex;
             flex-direction: column; /* Stack the text vertically */
-            justify-content: left; /* Center text vertically */
-            align-items: left; /* Align text to the center */
+            justify-content: flex-start; /* Align text to the top */
+            align-items: flex-start; /* Align text to the left */
         }
 
         footer {
