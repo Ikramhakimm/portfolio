@@ -77,6 +77,33 @@
             animation-delay: 1.5s; /* Delay for content */
         }
 
+        .gif-container {
+            position: relative; /* Relative positioning for the GIF container */
+            width: 220px; /* Set the width to match the image */
+            height: auto; /* Maintain aspect ratio */
+            overflow: hidden; /* Hide overflow */
+            flex-shrink: 0; /* Prevent shrinking */
+            animation: moveLeftRight 4s linear infinite; /* Add animation */
+        }
+
+        @keyframes moveLeftRight {
+            0% {
+                transform: translateX(0); /* Start position */
+            }
+            50% {
+                transform: translateX(20px); /* Move right */
+            }
+            100% {
+                transform: translateX(0); /* Back to start */
+            }
+        }
+
+        .animated-gif {
+            width: 100%; /* Make GIF responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15%; /* Slightly round the corners */
+        }
+
         img {
             width: 220px; /* Set width for the image */
             height: auto; /* Maintain aspect ratio */
@@ -155,6 +182,9 @@
 
     <div class="content">
         <img src="myself.jpg" alt="About Me" id="aboutImage"> <!-- Replace with your image -->
+        <div class="gif-container">
+            <img src="your-animation.gif" alt="Animated GIF" class="animated-gif"> <!-- Replace with your GIF -->
+        </div>
         <div class="info">
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
