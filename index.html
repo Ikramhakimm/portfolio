@@ -38,16 +38,6 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            position: relative; /* Allow positioning of logo */
-        }
-
-        header img {
-            position: absolute; /* Position logo */
-            top: 20%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            height: 150px; /* Adjust logo height */
-            transform: translate(-50%, -50%); /* Center the logo */
-            z-index: 1; /* Ensure logo is above video */
         }
 
         header h1 {
@@ -55,7 +45,21 @@
             font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-top: 80px; /* Add margin for spacing below the logo */
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center logo horizontally */
+            justify-content: center; /* Center logo vertically */
+            flex: 1; /* Take up remaining space */
+            position: relative; /* Ensure content is above video */
+            z-index: 1; /* Position content above video */
+        }
+
+        .logo-container img {
+            height: 150px; /* Adjust logo height */
+            margin-bottom: 20px; /* Spacing below logo */
         }
 
         nav {
@@ -146,9 +150,12 @@
     </video>
 
     <header>
-        <img src="looogooo.png" alt="Logo"> <!-- Replace with your logo image -->
         <h1>Welcome to My Portfolio Page</h1>
     </header>
+
+    <div class="logo-container">
+        <img src="loggo.png" alt="Logo"> <!-- Replace with your logo image -->
+    </div>
 
     <nav>
         <a href="index.html">Home</a>
