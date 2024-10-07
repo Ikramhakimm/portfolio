@@ -63,9 +63,8 @@
 
         .content {
             display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Stack content vertically */
-            align-items: center; /* Center horizontally */
-            position: relative; /* Position relative to allow absolute positioning of cat */
+            align-items: flex-start; /* Align items at the top */
+            justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px auto; /* Center the content with auto margins */
             padding: 30px; /* Padding around the content */
@@ -76,34 +75,6 @@
             opacity: 0; /* Start with opacity 0 */
             animation: fadeIn 1s forwards; /* Apply fade-in animation */
             animation-delay: 1.5s; /* Delay for content */
-        }
-
-        .cat-container {
-            position: absolute; /* Allow the cat to move freely within the content */
-            bottom: 10px; /* Position the cat above the footer */
-            left: 0; /* Start from the left */
-            width: 100%; /* Make container full width */
-            overflow: hidden; /* Hide overflow */
-        }
-
-        .walking-cat {
-            position: absolute; /* Position absolutely to allow movement */
-            width: 100px; /* Set the width of the cat */
-            animation: walk 4s linear infinite; /* Walk animation */
-        }
-
-        @keyframes walk {
-            0% {
-                left: -100px; /* Start off-screen to the left */
-                transform: scaleX(1); /* Normal orientation */
-            }
-            50% {
-                transform: scaleX(1); /* Normal orientation */
-            }
-            100% {
-                left: calc(100% + 100px); /* Move off-screen to the right */
-                transform: scaleX(-1); /* Flip orientation */
-            }
         }
 
         img {
@@ -187,9 +158,6 @@
         <div class="info">
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
-        </div>
-        <div class="cat-container">
-            <img src="cat.gif" alt="Walking Cat" class="walking-cat"> <!-- Replace with your cat GIF -->
         </div>
     </div>
 
