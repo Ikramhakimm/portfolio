@@ -50,7 +50,7 @@
 
         .content {
             display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center vertically */
+            align-items: flex-start; /* Align items to the top */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px;
             padding: 20px;
@@ -68,6 +68,9 @@
 
         .info {
             text-align: left; /* Align text to the left */
+            display: flex;
+            flex-direction: column; /* Stack the text vertically */
+            justify-content: flex-start; /* Align text to the top */
         }
 
         footer {
