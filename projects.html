@@ -99,6 +99,29 @@
             transform: scale(1.05); /* Scale image slightly on hover */
         }
 
+        /* Lightbox styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black with slight opacity */
+            justify-content: center; /* Center image horizontally */
+            align-items: center; /* Center image vertically */
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox:target {
+            display: flex; /* Show the lightbox */
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -153,36 +176,28 @@
         <h3>My Projects</h3>
         <div class="projects" id="projectContainer">
             <div class="project-container">
-                <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
+                <a href="#lightbox1">
+                    <img src="tryy.png" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
+                </a>
                 <p>Project 1 Description: Make a platformer game using Godot Engine.</p>
             </div>
             <div class="project-container">
-                <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
+                <a href="#lightbox2">
+                    <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
+                </a>
                 <p>Project 2 Description: Make lego character using Blender 3D.</p>
             </div>
             <div class="project-container">
-                <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
+                <a href="#lightbox3">
+                    <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
+                </a>
                 <p>Project 3 Description: Make Building using Blender 3D.</p>
             </div>
             <div class="project-container">
-                <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+                <a href="#lightbox4">
+                    <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+                </a>
                 <p>Project 4 Description: Make racing game using Unity 3D.</p>
-            </div>
-            <div class="project-container hidden">
-                <img src="fullll.png" alt="Project 5" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 5 Description: Make a puzzle game using GDevelop.</p>
-            </div>
-            <div class="project-container hidden">
-                <img src="posterr.png" alt="Project 6" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 6 Description: Create a VR experience using Unity 3D.</p>
-            </div>
-            <div class="project-container hidden">
-                <img src="meja.png" alt="Project 7" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 7 Description: Develop an educational game using Unity 3D.</p>
-            </div>
-            <div class="project-container hidden">
-                <img src="ikramposter.png" alt="Project 8" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 8 Description: Create a mobile app using Flutter.</p>
             </div>
         </div>
         <div class="pagination">
@@ -194,6 +209,20 @@
     <footer>
         <p>&copy; 2024 Ikram Hakim</p>
     </footer>
+
+    <!-- Lightbox sections -->
+    <div id="lightbox1" class="lightbox">
+        <img src="tryy.png" alt="Project 1 Fullscreen">
+    </div>
+    <div id="lightbox2" class="lightbox">
+        <img src="tryyy.png" alt="Project 2 Fullscreen">
+    </div>
+    <div id="lightbox3" class="lightbox">
+        <img src="tryyyy.png" alt="Project 3 Fullscreen">
+    </div>
+    <div id="lightbox4" class="lightbox">
+        <img src="tryyyyy.png" alt="Project 4 Fullscreen">
+    </div>
 
     <script>
         const projects = document.querySelectorAll('.project-container');
