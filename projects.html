@@ -122,10 +122,6 @@
             display: flex; /* Show the lightbox */
         }
 
-        .lightbox:target .close {
-            display: block;
-        }
-
         /* Close button styles */
         .close {
             position: absolute;
@@ -137,7 +133,6 @@
             padding: 5px 10px;
             border-radius: 50%;
             text-decoration: none;
-            display: none; /* Initially hidden */
             cursor: pointer;
         }
 
@@ -249,71 +244,80 @@
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Ikram Hakim. All rights reserved.</p>
-    </footer>
-
-    <!-- Lightbox -->
+    <!-- Lightbox structure for each project -->
     <div id="lightbox1" class="lightbox">
+        <img src="tryy.png" alt="Full image 1">
         <a href="#" class="close">&times;</a>
-        <img src="tryy.png" alt="Project 1 Fullscreen">
     </div>
     <div id="lightbox2" class="lightbox">
+        <img src="tryyy.png" alt="Full image 2">
         <a href="#" class="close">&times;</a>
-        <img src="tryyy.png" alt="Project 2 Fullscreen">
     </div>
     <div id="lightbox3" class="lightbox">
+        <img src="tryyyy.png" alt="Full image 3">
         <a href="#" class="close">&times;</a>
-        <img src="tryyyy.png" alt="Project 3 Fullscreen">
     </div>
     <div id="lightbox4" class="lightbox">
+        <img src="tryyyyy.png" alt="Full image 4">
         <a href="#" class="close">&times;</a>
-        <img src="tryyyyy.png" alt="Project 4 Fullscreen">
+    </div>
+    <div id="lightbox5" class="lightbox">
+        <img src="fullll.png" alt="Full image 5">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox6" class="lightbox">
+        <img src="meja.png" alt="Full image 6">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox7" class="lightbox">
+        <img src="posterr.png" alt="Full image 7">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox8" class="lightbox">
+        <img src="ikramposter.png" alt="Full image 8">
+        <a href="#" class="close">&times;</a>
     </div>
 
+    <footer>
+        <p>&copy; 2024 My GitHub Page</p>
+    </footer>
+
     <script>
+        // Pagination logic
         const projects = document.querySelectorAll('.project-container');
-        const prevPageButton = document.getElementById('prevPage');
-        const nextPageButton = document.getElementById('nextPage');
-        const itemsPerPage = 4; // Number of images per page
-        let currentPage = 0; // Track current page
+        const projectsPerPage = 4; // Display 4 projects per page
+        let currentPage = 0;
 
-        // Function to display projects based on the current page
-        function displayProjects() {
-            const start = currentPage * itemsPerPage; // Calculate the starting index
-            const end = start + itemsPerPage; // Calculate the ending index
-
-            // Hide all projects initially
+        function updateProjects() {
             projects.forEach((project, index) => {
-                project.classList.add('hidden'); // Add hidden class to hide projects
-                // Show only the projects for the current page
-                if (index >= start && index < end) {
-                    project.classList.remove('hidden'); // Remove hidden class to show projects
-                }
+                project.classList.toggle('hidden', Math.floor(index / projectsPerPage) !== currentPage);
             });
-
-            // Disable buttons if on the first or last page
-            prevPageButton.disabled = currentPage === 0;
-            nextPageButton.disabled = end >= projects.length; // Disable if on last page
         }
 
-        // Event listeners for pagination buttons
-        prevPageButton.addEventListener('click', () => {
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < Math.floor(projects.length / projectsPerPage)) {
+                currentPage++;
+                updateProjects();
+            }
+        });
+
+        document.getElementById('prevPage').addEventListener('click', () => {
             if (currentPage > 0) {
-                currentPage--; // Move to the previous page
-                displayProjects(); // Update project display
+                currentPage--;
+                updateProjects();
             }
         });
 
-        nextPageButton.addEventListener('click', () => {
-            if ((currentPage + 1) * itemsPerPage < projects.length) {
-                currentPage++; // Move to the next page
-                displayProjects(); // Update project display
-            }
-        });
+        updateProjects(); // Initialize project display
 
-        // Initial display
-        displayProjects();
+        // Lightbox closing on outside click
+        document.querySelectorAll('.lightbox').forEach(lightbox => {
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox || event.target.classList.contains('close')) {
+                    window.location.hash = ''; // Remove hash to close the lightbox
+                }
+            });
+        });
     </script>
 
 </body>
