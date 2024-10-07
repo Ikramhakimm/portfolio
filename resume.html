@@ -88,15 +88,22 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            display: flex;
+            display: none; /* Initially hidden */
             justify-content: center;
             align-items: center;
-            display: none; /* Initially hidden */
+            opacity: 0; /* Initial opacity for fade effect */
+            transition: opacity 0.5s ease; /* Fade transition */
+        }
+
+        .fullscreen.show {
+            display: flex; /* Show the fullscreen overlay */
+            opacity: 1; /* Full opacity when shown */
         }
 
         .fullscreen img {
             max-width: 90%;
             max-height: 90%;
+            border-radius: 10%; /* Slightly round the corners */
         }
     </style>
 </head>
@@ -141,16 +148,15 @@
         // Get elements
         const resumeImage = document.getElementById('resumeImage');
         const fullscreen = document.getElementById('fullscreen');
-        const fullscreenImage = document.getElementById('fullscreenImage');
 
         // Add click event to the resume image
         resumeImage.onclick = function() {
-            fullscreen.style.display = 'flex'; // Show the fullscreen overlay
+            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
         }
 
         // Close fullscreen when clicking on the overlay
         fullscreen.onclick = function() {
-            fullscreen.style.display = 'none'; // Hide the fullscreen overlay
+            fullscreen.classList.remove('show'); // Remove show class to hide the fullscreen overlay
         }
     </script>
 
