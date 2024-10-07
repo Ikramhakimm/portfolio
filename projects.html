@@ -75,6 +75,19 @@
             border-radius: 10%; /* Slightly round the corners */
             cursor: pointer; /* Change cursor to pointer */
             transition: transform 0.3s; /* Smooth scaling */
+            animation: fadeIn 0.5s ease-in; /* Add fade-in animation */
+            opacity: 0; /* Start with opacity 0 */
+            animation-fill-mode: forwards; /* Keep the final state of the animation */
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .projects img:hover {
@@ -142,15 +155,15 @@
             </div>
             <div class="project-container">
                 <img src="tryyy.png" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 2 Description: Make lego character using Blender 3D .</p>
+                <p>Project 2 Description: Make lego character using Blender 3D.</p>
             </div>
             <div class="project-container">
                 <img src="tryyyy.png" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 3 Description: Make Building using Blender 3D .</p>
+                <p>Project 3 Description: Make Building using Blender 3D.</p>
             </div>
             <div class="project-container">
                 <img src="tryyyyy.png" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
-                <p>Project 4 Description: Make racing game using unity 3D.</p>
+                <p>Project 4 Description: Make racing game using Unity 3D.</p>
             </div>
         </div>
     </div>
@@ -172,6 +185,9 @@
 
         // Add click event to project images
         projectImages.forEach(img => {
+            img.onload = function() {
+                this.style.opacity = 1; // Set opacity to 1 when the image loads
+            };
             img.onclick = function() {
                 fullscreenImage.src = this.src; // Set the src of the fullscreen image to the clicked image
                 fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
