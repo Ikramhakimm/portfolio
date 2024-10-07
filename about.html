@@ -15,9 +15,8 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* Center content horizontally */
-            padding: 0; /* Remove padding */
+            justify-content: flex-start; /* Align content to the top */
             min-height: 100vh; /* Ensure it takes full height */
-            justify-content: flex-start; /* Align items at the top */
         }
 
         header {
@@ -25,10 +24,6 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
-            position: sticky; /* Keep header fixed at the top */
-            top: 0; /* Sticky to the top */
-            z-index: 10; /* Ensure the header is above other content */
-            margin: 0; /* Ensure no margin */
         }
 
         h1 {
@@ -54,13 +49,26 @@
         }
 
         .content {
-            text-align: center;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
-            max-width: 600px; /* Limit width for better readability */
-            width: 100%; /* Full width for the content */
+            max-width: 800px; /* Increase max-width for better layout */
+            width: 100%; /* Full width */
+        }
+
+        img {
+            width: 200px; /* Set width for the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10%; /* Slightly round the corners */
+            margin-right: 20px; /* Space between image and text */
+        }
+
+        .info {
+            text-align: left; /* Align text to the left */
         }
 
         footer {
@@ -89,17 +97,20 @@
     </nav>
 
     <div class="content">
-        <h3>Hello!</h3>
-        <p>My name is [Your Name]. I am a [Your Profession] with a passion for [Your Interests].</p>
-        
-        <h3>Background</h3>
-        <p>Here is a brief overview of my background, experience, and interests.</p>
-        
-        <h3>Hobbies</h3>
-        <p>In my free time, I enjoy [Your Hobbies].</p>
-        
-        <h3>Goals</h3>
-        <p>My goals include [Your Goals].</p>
+        <img src="your_image.jpg" alt="About Me"> <!-- Replace with your image -->
+        <div class="info">
+            <h3>My Name</h3>
+            <p>Welcome to my about page! Here is a little information about me.</p>
+            
+            <h3>Education</h3>
+            <p>Your educational background here.</p>
+            
+            <h3>Experience</h3>
+            <p>Your work experience here.</p>
+            
+            <h3>Skills</h3>
+            <p>Your key skills here.</p>
+        </div>
     </div>
 
     <footer>
