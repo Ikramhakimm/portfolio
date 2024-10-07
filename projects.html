@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My GitHub Page - Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
+            background-size: cover;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            min-height: 100vh; /* Ensure it takes full height */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px; /* Limit width for better readability */
+        }
+
+        .projects {
+            display: grid; /* Use grid layout for project images */
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px; /* Space between images */
+            margin: 20px;
+        }
+
+        .projects img {
+            width: 100%; /* Full width of the container */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10%; /* Slightly round the corners */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: transform 0.3s; /* Smooth scaling */
+        }
+
+        .projects img:hover {
+            transform: scale(1.05); /* Scale image slightly on hover */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        /* Fullscreen styles */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Initial opacity for fade effect */
+            transition: opacity 0.5s ease; /* Fade transition */
+        }
+
+        .fullscreen.show {
+            display: flex; /* Show the fullscreen overlay */
+            opacity: 1; /* Full opacity when shown */
+        }
+
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10%; /* Slightly round the corners */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Projects</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="content">
+        <h3>My Projects</h3>
+        <div class="projects">
+            <img src="project1.jpg" alt="Project 1" class="project-image"> <!-- Replace with your project image -->
+            <img src="project2.jpg" alt="Project 2" class="project-image"> <!-- Replace with your project image -->
+            <img src="project3.jpg" alt="Project 3" class="project-image"> <!-- Replace with your project image -->
+            <img src="project4.jpg" alt="Project 4" class="project-image"> <!-- Replace with your project image -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ikram Hakim</p>
+    </footer>
+
+    <!-- Fullscreen Image Overlay -->
+    <div class="fullscreen" id="fullscreen">
+        <img src="" alt="Fullscreen Project" id="fullscreenImage"> <!-- Empty src to be filled by JS -->
+    </div>
+
+    <script>
+        // Get elements
+        const projectImages = document.querySelectorAll('.project-image');
+        const fullscreen = document.getElementById('fullscreen');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+
+        // Add click event to project images
+        projectImages.forEach(img => {
+            img.onclick = function() {
+                fullscreenImage.src = this.src; // Set the src of the fullscreen image to the clicked image
+                fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
+            }
+        });
+
+        // Close fullscreen when clicking on the overlay
+        fullscreen.onclick = function() {
+            fullscreen.classList.remove('show'); // Remove show class to hide the fullscreen overlay
+        }
+    </script>
+
+</body>
+</html>
 
