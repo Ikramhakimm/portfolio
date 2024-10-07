@@ -55,20 +55,20 @@
         }
 
         .skill {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
+            display: inline-block; /* Align icons in a row */
+            margin: 15px;
             cursor: pointer; /* Change cursor to pointer for clickability */
+            position: relative; /* Position for absolute child elements */
         }
 
         .skill img {
             width: 50px; /* Adjust the size of the skill icons */
             height: auto;
-            margin-right: 15px; /* Space between image and text */
+            transition: transform 0.3s; /* Add a hover animation */
         }
 
-        .skill-name {
-            flex-grow: 1; /* Allow the name to grow */
+        .skill img:hover {
+            transform: scale(1.1); /* Scale effect on hover */
         }
 
         .progress {
@@ -77,6 +77,7 @@
             height: 20px;
             width: 100%;
             margin: 5px 0;
+            position: relative; /* Relative position for animated fill */
         }
 
         .progress-bar {
@@ -84,14 +85,7 @@
             height: 100%;
             border-radius: 5px;
             transition: width 0.5s; /* Smooth transition for width */
-        }
-
-        .info {
-            display: none; /* Hide info by default */
-            margin-top: 10px;
-            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background for info */
-            border-radius: 5px;
-            padding: 10px;
+            width: 0%; /* Start at 0% */
         }
 
         footer {
@@ -121,60 +115,48 @@
 
     <div class="content">
         <h2>My Skills</h2>
-        <p>Here are some of the key skills I have developed over the years:</p>
+        <p>Click on a skill icon to reveal your mastery percentage:</p>
 
-        <div class="skill" onclick="toggleInfo('unity-info')">
+        <div class="skill" onclick="increaseProgress('unity-progress', 70)">
             <img src="unity.png" alt="Unity" /> <!-- Replace with your Unity icon -->
-            <div class="skill-name">Unity</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div>
+                <div class="progress-bar" id="unity-progress" style="width: 0%;" title="70% mastery"></div>
             </div>
-            <div class="info" id="unity-info">Mastered: 70% - Experience in game development and real-time 3D applications.</div>
         </div>
 
-        <div class="skill" onclick="toggleInfo('blender-info')">
+        <div class="skill" onclick="increaseProgress('blender-progress', 60)">
             <img src="blender.png" alt="Blender" /> <!-- Replace with your Blender icon -->
-            <div class="skill-name">Blender</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 60%;" title="60% mastery">60%</div>
+                <div class="progress-bar" id="blender-progress" style="width: 0%;" title="60% mastery"></div>
             </div>
-            <div class="info" id="blender-info">Mastered: 60% - Proficient in 3D modeling and animation.</div>
         </div>
 
-        <div class="skill" onclick="toggleInfo('ps-info')">
+        <div class="skill" onclick="increaseProgress('ps-progress', 80)">
             <img src="ps.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
-            <div class="skill-name">Photoshop</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 80%;" title="80% mastery">80%</div>
+                <div class="progress-bar" id="ps-progress" style="width: 0%;" title="80% mastery"></div>
             </div>
-            <div class="info" id="ps-info">Mastered: 80% - Advanced skills in photo editing and graphic design.</div>
         </div>
 
-        <div class="skill" onclick="toggleInfo('csharp-info')">
+        <div class="skill" onclick="increaseProgress('csharp-progress', 75)">
             <img src="csharp.png" alt="C#" /> <!-- Replace with your C# icon -->
-            <div class="skill-name">C#</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 75%;" title="75% mastery">75%</div>
+                <div class="progress-bar" id="csharp-progress" style="width: 0%;" title="75% mastery"></div>
             </div>
-            <div class="info" id="csharp-info">Mastered: 75% - Strong understanding of object-oriented programming.</div>
         </div>
 
-        <div class="skill" onclick="toggleInfo('cplus-info')">
+        <div class="skill" onclick="increaseProgress('cplus-progress', 65)">
             <img src="cplus.png" alt="C++" /> <!-- Replace with your C++ icon -->
-            <div class="skill-name">C++</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 65%;" title="65% mastery">65%</div>
+                <div class="progress-bar" id="cplus-progress" style="width: 0%;" title="65% mastery"></div>
             </div>
-            <div class="info" id="cplus-info">Mastered: 65% - Experienced in system programming and game development.</div>
         </div>
 
-        <div class="skill" onclick="toggleInfo('gdevelop-info')">
+        <div class="skill" onclick="increaseProgress('gdevelop-progress', 70)">
             <img src="godot.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
-            <div class="skill-name">GDevelop</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div>
+                <div class="progress-bar" id="gdevelop-progress" style="width: 0%;" title="70% mastery"></div>
             </div>
-            <div class="info" id="gdevelop-info">Mastered: 70% - Familiar with game development using no-code tools.</div>
         </div>
     </div>
 
@@ -183,18 +165,10 @@
     </footer>
 
     <script>
-        function toggleInfo(infoId) {
-            const infoElement = document.getElementById(infoId);
-            if (infoElement.style.display === "block") {
-                infoElement.style.display = "none";
-            } else {
-                // Hide all other info boxes
-                const allInfo = document.querySelectorAll('.info');
-                allInfo.forEach(info => info.style.display = 'none');
-
-                // Show the clicked info box
-                infoElement.style.display = "block";
-            }
+        function increaseProgress(progressId, percentage) {
+            const progressBar = document.getElementById(progressId);
+            // Set the progress bar width to the specified percentage
+            progressBar.style.width = percentage + '%';
         }
     </script>
 
