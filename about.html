@@ -49,7 +49,7 @@
         .content {
             display: flex; /* Use flexbox for layout */
             align-items: center; /* Center vertically */
-            justify-content: flex-start; /* Align items to the start (left) */
+            justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px;
             padding: 20px;
@@ -60,6 +60,7 @@
             margin-left: auto;
             margin-right: auto;
             flex-grow: 1; /* Allow content to grow and push footer down */
+            text-align: center; /* Center text within the content */
         }
 
         img {
@@ -69,11 +70,11 @@
         }
 
         .info {
-            text-align: left; /* Align text to the left */
+            text-align: center; /* Center text to match image */
             display: flex;
             flex-direction: column; /* Stack the text vertically */
             justify-content: center; /* Center text vertically */
-            align-items: flex-start; /* Align text to the start (left) */
+            align-items: center; /* Align text to the center */
         }
 
         footer {
@@ -101,11 +102,11 @@
     </nav>
 
     <div class="content">
+        <img src="myself.jpg" alt="About Me"> <!-- Replace with your image -->
         <div class="info">
             <h3>My Biodata</h3>
             <p>Hi, I'm Ikram Hakim, a final-semester Game Design student at KPTM Ipoh. I have a passion for gaming and design, focusing on creating engaging experiences that captivate players. Throughout my studies, I've developed skills in game development and 3D modeling. I'm excited to apply my knowledge to real-world projects and contribute to innovative game designs.</p>
         </div>
-        <img src="myself.jpg" alt="About Me"> <!-- Replace with your image -->
     </div>
 
     <footer>
