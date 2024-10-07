@@ -51,36 +51,20 @@
             align-items: flex-start; /* Align items at the top */
             justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 800px; /* Increase max-width for better layout */
-            width: 100%; /* Full width */
-            gap: 20px; /* Space between image and text */
-            margin-left: auto;
-            margin-right: auto;
-            flex-grow: 1; /* Allow content to grow and push footer down */
-            opacity: 0; /* Start invisible */
-            transform: translateY(20px); /* Start slightly lower */
-            animation: fadeIn 1s forwards; /* Fade in animation */
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1; /* Fully visible */
-                transform: translateY(0); /* Move to original position */
-            }
+            margin: 20px auto; /* Center the content with auto margins */
+            padding: 30px; /* Padding around the content */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
+            gap: 30px; /* Space between image and text */
+            max-width: 800px; /* Limit the width of content */
         }
 
         img {
-            width: 200px; /* Set width for the image */
+            width: 220px; /* Set width for the image */
             height: auto; /* Maintain aspect ratio */
-            border-radius: 10%; /* Slightly round the corners */
-            transition: transform 0.3s; /* Smooth transition */
-        }
-
-        img:hover {
-            transform: scale(1.1); /* Scale up slightly on hover */
+            border-radius: 15%; /* Slightly round the corners */
+            display: block; /* Ensures image is centered */
+            margin: 0 auto; /* Center the image */
         }
 
         .info {
@@ -89,15 +73,6 @@
             flex-direction: column; /* Stack the text vertically */
             justify-content: flex-start; /* Align text to the top */
             align-items: flex-start; /* Align text to the left */
-        }
-
-        .info h3 {
-            transition: color 0.3s, text-shadow 0.3s; /* Smooth transition */
-        }
-
-        .info h3:hover {
-            color: #ffcc00; /* Change color on hover */
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); /* Add shadow */
         }
 
         footer {
