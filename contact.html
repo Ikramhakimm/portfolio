@@ -149,7 +149,7 @@
         <h3>Contact</h3>
         <p>Call: <a href="tel:0138255756" style="color: white;">0138255756</a></p>
         <p>Instagram: <a href="https://www.instagram.com/ikramhkim" target="_blank" style="color: white;">ikramhkim</a></p>
-        <p>Email: <a href="mailto:ikramhakim0138255756" style="color: white;">ikramhakim0138255756</a></p>
+        <p>Email: <a href="mailto:ikramhakim013@gmail.com" style="color: white;">ikramhakim013@gmail.com</a></p>
     </div>
 
     <footer>
@@ -158,24 +158,26 @@
 
     <!-- Fullscreen Image Overlay -->
     <div class="fullscreen" id="fullscreen">
-        <img src="resume.jpg" alt="resume fullscreen" id="fullscreenImage"> <!-- Replace with your resume picture -->
+        <img src="" alt="resume fullscreen" id="fullscreenImage"> <!-- Placeholder for fullscreen image -->
     </div>
 
     <script>
         // Get elements
         const resumeImage = document.getElementById('resumeImage');
+        const resumeExtraImage = document.getElementById('resumeExtraImage');
         const fullscreen = document.getElementById('fullscreen');
+        const fullscreenImage = document.getElementById('fullscreenImage');
 
         // Add click event to the resume image
         resumeImage.onclick = function() {
+            fullscreenImage.src = resumeImage.src; // Set the fullscreen image source
             fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
         }
 
         // Add click event to the extra resume image
-        const resumeExtraImage = document.getElementById('resumeExtraImage');
         resumeExtraImage.onclick = function() {
+            fullscreenImage.src = resumeExtraImage.src; // Set the fullscreen image source to the extra resume image
             fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
-            fullscreenImage.src = resumeExtraImage.src; // Change source to the extra resume image
         }
 
         // Close fullscreen when clicking on the overlay
