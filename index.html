@@ -47,21 +47,6 @@
             letter-spacing: 3px;
         }
 
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center logo horizontally */
-            justify-content: center; /* Center logo vertically */
-            flex: 1; /* Take up remaining space */
-            position: relative; /* Ensure content is above video */
-            z-index: 1; /* Position content above video */
-        }
-
-        .logo-container img {
-            height: 150px; /* Adjust logo height */
-            margin-bottom: 20px; /* Spacing below logo */
-        }
-
         nav {
             margin: 20px 0;
             text-align: center;
@@ -81,6 +66,17 @@
             background-color: #fff;
             color: #000;
             transform: scale(1.1);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Center logo horizontally */
+            margin: 20px 0; /* Spacing above and below logo */
+        }
+
+        .logo-container img {
+            height: 150px; /* Increase logo height */
+            filter: brightness(0); /* Make logo black */
         }
 
         .content {
@@ -153,10 +149,6 @@
         <h1>Welcome to My Portfolio Page</h1>
     </header>
 
-    <div class="logo-container">
-        <img src="loggo.png" alt="Logo"> <!-- Replace with your logo image -->
-    </div>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -166,9 +158,14 @@
         <a href="contact.html">Contact</a>
     </nav>
 
+    <!-- Logo Container -->
+    <div class="logo-container">
+        <img src="loggo.png" alt="Logo"> <!-- Replace with your logo image -->
+    </div>
+
     <div class="content" id="home">
         <h2>About This Page</h2>
-        <p> Hi, I'm Ikramhakim, a passionate game designer and developer with a focus on creating engaging and educational games.</p>
+        <p>Hi, I'm Ikramhakim, a passionate game designer and developer with a focus on creating engaging and educational games.</p>
     </div>
 
     <footer>
