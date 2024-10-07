@@ -13,11 +13,24 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e09, #d0e);
+            overflow: hidden; /* Prevent scrollbars */
             color: #fff;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative; /* For positioning video */
+        }
+
+        video {
+            position: absolute; /* Position video */
+            top: 50%;
+            left: 50%;
+            width: 100%; /* Cover the entire viewport */
+            height: auto; /* Maintain aspect ratio */
+            min-height: 100%;
+            min-width: 100%;
+            transform: translate(-50%, -50%); /* Center video */
+            z-index: -1; /* Send video to back */
         }
 
         header {
@@ -59,6 +72,8 @@
             padding: 50px 20px;
             text-align: center;
             flex: 1;
+            position: relative; /* Ensure content is above video */
+            z-index: 1; /* Position content above video */
         }
 
         .content h2 {
@@ -113,6 +128,12 @@
 </head>
 <body>
 
+    <!-- Video Background -->
+    <video autoplay muted loop>
+        <source src="your-video-file.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <header>
         <h1>Welcome to My GitHub Page</h1>
     </header>
@@ -122,7 +143,7 @@
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="resume.html">Resume</a>
-        <a href="skills.html">Skills</a> <!-- New Skills section -->
+        <a href="skills.html">Skills</a>
         <a href="contact.html">Contact</a>
     </nav>
 
