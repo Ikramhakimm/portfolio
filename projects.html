@@ -72,9 +72,6 @@
 
         .project-container {
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centers images and text horizontally */
         }
 
         .projects img {
@@ -168,6 +165,13 @@
         .hidden {
             display: none;
         }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px; /* Adjust as needed */
+        }
     </style>
 </head>
 <body>
@@ -237,14 +241,14 @@
                 <p>My poster.</p>
             </div>
             <!-- New project on 3rd page -->
-            <div class="project-container hidden">
+            <div class="project-container hidden centered">
                 <a href="#lightbox9">
                     <img src="kereteee.png" alt="Project 9" class="project-image">
                 </a>
                 <p>Current project</p>
             </div>
         </div>
-        <div class="pagination">
+        <div class="pagination" id="paginationContainer">
             <button id="prevPage">Previous</button>
             <button id="nextPage">Next</button>
         </div>
@@ -264,7 +268,7 @@
     </div>
     <div id="lightbox4" class="lightbox">
         <img src="tryyyyy.png" alt="Full image 4">
-        <a href="#" class="close">&times;"></a>
+        <a href="#" class="close">&times;</a>
     </div>
     <div id="lightbox5" class="lightbox">
         <img src="fullll.png" alt="Full image 5">
@@ -287,54 +291,46 @@
         <a href="#" class="close">&times;</a>
     </div>
 
-    <footer>
-        <p>&copy; 2024 My GitHub Page. All rights reserved.</p>
-    </footer>
-
     <script>
+        let currentPage = 0;
         const projectsPerPage = 4;
-        let currentPage = 1;
+        const projectContainers = document.querySelectorAll('.project-container');
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+        const paginationContainer = document.getElementById('paginationContainer');
 
-        function showPage(page) {
-            const projects = document.querySelectorAll('.project-container');
-            const totalPages = Math.ceil(projects.length / projectsPerPage);
-
-            projects.forEach((project, index) => {
-                project.classList.add('hidden');
-                const start = (page - 1) * projectsPerPage;
-                const end = page * projectsPerPage;
-                if (index >= start && index < end) {
+        function updateProjectVisibility() {
+            projectContainers.forEach((project, index) => {
+                if (index >= currentPage * projectsPerPage && index < (currentPage + 1) * projectsPerPage) {
                     project.classList.remove('hidden');
+                } else {
+                    project.classList.add('hidden');
                 }
             });
 
-            document.getElementById('prevPage').disabled = page === 1;
-            document.getElementById('nextPage').disabled = page === totalPages;
-
-            if (page === totalPages) {
-                document.getElementById('nextPage').style.display = 'none';
+            // Hide pagination if showing the "kereteee" project
+            if (currentPage === 2) {
+                paginationContainer.style.display = 'none';
             } else {
-                document.getElementById('nextPage').style.display = 'inline';
+                paginationContainer.style.display = 'flex';
             }
         }
 
-        document.getElementById('prevPage').addEventListener('click', () => {
-            if (currentPage > 1) {
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 0) {
                 currentPage--;
-                showPage(currentPage);
+                updateProjectVisibility();
             }
         });
 
-        document.getElementById('nextPage').addEventListener('click', () => {
-            const totalPages = Math.ceil(document.querySelectorAll('.project-container').length / projectsPerPage);
-            if (currentPage < totalPages) {
+        nextButton.addEventListener('click', () => {
+            if (currentPage < Math.ceil(projectContainers.length / projectsPerPage) - 1) {
                 currentPage++;
-                showPage(currentPage);
+                updateProjectVisibility();
             }
         });
 
-        showPage(currentPage);
+        updateProjectVisibility();
     </script>
-
 </body>
 </html>
