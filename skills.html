@@ -58,6 +58,7 @@
             display: flex;
             align-items: center;
             margin: 15px 0;
+            cursor: pointer; /* Change cursor to pointer for clickability */
         }
 
         .skill img {
@@ -83,6 +84,14 @@
             height: 100%;
             border-radius: 5px;
             transition: width 0.5s; /* Smooth transition for width */
+        }
+
+        .info {
+            display: none; /* Hide info by default */
+            margin-top: 10px;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background for info */
+            border-radius: 5px;
+            padding: 10px;
         }
 
         footer {
@@ -114,58 +123,80 @@
         <h2>My Skills</h2>
         <p>Here are some of the key skills I have developed over the years:</p>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('unity-info')">
             <img src="unity.png" alt="Unity" /> <!-- Replace with your Unity icon -->
             <div class="skill-name">Unity</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div>
             </div>
+            <div class="info" id="unity-info">Mastered: 70% - Experience in game development and real-time 3D applications.</div>
         </div>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('blender-info')">
             <img src="blender.png" alt="Blender" /> <!-- Replace with your Blender icon -->
             <div class="skill-name">Blender</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 60%;" title="60% mastery">60%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 60%;" title="60% mastery">60%</div>
             </div>
+            <div class="info" id="blender-info">Mastered: 60% - Proficient in 3D modeling and animation.</div>
         </div>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('ps-info')">
             <img src="ps.png" alt="Photoshop" /> <!-- Replace with your Photoshop icon -->
             <div class="skill-name">Photoshop</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 80%;" title="80% mastery">80%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 80%;" title="80% mastery">80%</div>
             </div>
+            <div class="info" id="ps-info">Mastered: 80% - Advanced skills in photo editing and graphic design.</div>
         </div>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('csharp-info')">
             <img src="csharp.png" alt="C#" /> <!-- Replace with your C# icon -->
             <div class="skill-name">C#</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 75%;" title="75% mastery">75%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 75%;" title="75% mastery">75%</div>
             </div>
+            <div class="info" id="csharp-info">Mastered: 75% - Strong understanding of object-oriented programming.</div>
         </div>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('cplus-info')">
             <img src="cplus.png" alt="C++" /> <!-- Replace with your C++ icon -->
             <div class="skill-name">C++</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 65%;" title="65% mastery">65%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 65%;" title="65% mastery">65%</div>
             </div>
+            <div class="info" id="cplus-info">Mastered: 65% - Experienced in system programming and game development.</div>
         </div>
 
-        <div class="skill">
+        <div class="skill" onclick="toggleInfo('gdevelop-info')">
             <img src="godot.png" alt="GDevelop" /> <!-- Replace with your GDevelop icon -->
             <div class="skill-name">GDevelop</div>
             <div class="progress">
-                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div> <!-- Change the width for mastery percentage -->
+                <div class="progress-bar" style="width: 70%;" title="70% mastery">70%</div>
             </div>
+            <div class="info" id="gdevelop-info">Mastered: 70% - Familiar with game development using no-code tools.</div>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2024 My GitHub Page</p>
     </footer>
+
+    <script>
+        function toggleInfo(infoId) {
+            const infoElement = document.getElementById(infoId);
+            if (infoElement.style.display === "block") {
+                infoElement.style.display = "none";
+            } else {
+                // Hide all other info boxes
+                const allInfo = document.querySelectorAll('.info');
+                allInfo.forEach(info => info.style.display = 'none');
+
+                // Show the clicked info box
+                infoElement.style.display = "block";
+            }
+        }
+    </script>
 
 </body>
 </html>
