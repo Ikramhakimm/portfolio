@@ -165,6 +165,42 @@
         .hidden {
             display: none;
         }
+
+        /* Video modal styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal iframe {
+            width: 80%;
+            height: 80%;
+        }
+
+        .video-modal:target {
+            display: flex;
+        }
+
+        .video-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+            font-size: 30px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -247,95 +283,73 @@
                 <p>Food Packaging</p>
             </div>
         </div>
+        
         <div class="pagination">
-            <button id="prevPage">Previous</button>
-            <button id="nextPage">Next</button>
+            <button id="prevButton" class="hidden">Previous</button>
+            <button id="nextButton">Next</button>
         </div>
+        
+        <button id="seeMoreButton">See More</button>
     </div>
 
-    <div id="lightbox1" class="lightbox">
-        <img src="tryy.png" alt="Full image 1">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox2" class="lightbox">
-        <img src="tryyy.png" alt="Full image 2">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox3" class="lightbox">
-        <img src="tryyyy.png" alt="Full image 3">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox4" class="lightbox">
-        <img src="tryyyyy.png" alt="Full image 4">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox5" class="lightbox">
-        <img src="fullll.png" alt="Full image 5">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox6" class="lightbox">
-        <img src="meja.png" alt="Full image 6">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox7" class="lightbox">
-        <img src="posterr.png" alt="Full image 7">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox8" class="lightbox">
-        <img src="ikramposter.png" alt="Full image 8">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox9" class="lightbox">
-        <img src="kereteee.png" alt="Full image 9">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox10" class="lightbox">
-        <img src="di.png" alt="Full image 10">
-        <a href="#" class="close">&times;</a>
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <a href="#close" class="video-close">&times;</a>
+        <iframe src="https://www.youtube.com/embed/your-video-id1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id2" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <footer>
-        <p>&copy; 2024 My GitHub Page. All rights reserved.</p>
+        <p>&copy; 2024 Your Name</p>
     </footer>
 
     <script>
-        const projectsPerPage = 4;
-        let currentPage = 1;
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+        const projectContainer = document.getElementById('projectContainer');
+        const seeMoreButton = document.getElementById('seeMoreButton');
 
-        function showPage(page) {
-            const projects = document.querySelectorAll('.project-container');
-            const totalPages = Math.ceil(projects.length / projectsPerPage);
+        let currentPage = 0;
+        const itemsPerPage = 4;
+        const projects = document.querySelectorAll('.project-container');
 
+        function showProjects() {
             projects.forEach((project, index) => {
                 project.classList.add('hidden');
-                const start = (page - 1) * projectsPerPage;
-                const end = page * projectsPerPage;
-                if (index >= start && index < end) {
+                if (index >= currentPage * itemsPerPage && index < (currentPage + 1) * itemsPerPage) {
                     project.classList.remove('hidden');
                 }
             });
 
-            document.getElementById('prevPage').disabled = page === 1;
-            document.getElementById('nextPage').style.display = (page === totalPages || totalPages < 3) ? 'none' : 'inline-block';
+            prevButton.classList.toggle('hidden', currentPage === 0);
+            prevButton.classList.toggle('hidden', currentPage === Math.ceil(projects.length / itemsPerPage) - 1);
         }
 
-        document.getElementById('prevPage').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        });
-
-        document.getElementById('nextPage').addEventListener('click', () => {
-            const totalPages = Math.ceil(document.querySelectorAll('.project-container').length / projectsPerPage);
-            if (currentPage < totalPages) {
+        nextButton.addEventListener('click', () => {
+            if (currentPage < Math.ceil(projects.length / itemsPerPage) - 1) {
                 currentPage++;
-                showPage(currentPage);
+                showProjects();
             }
         });
 
-        showPage(currentPage);
-    </script>
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                showProjects();
+            }
+        });
 
+        seeMoreButton.addEventListener('click', () => {
+            document.getElementById('videoModal').style.display = 'flex';
+        });
+
+        // Close video modal
+        document.querySelector('.video-close').addEventListener('click', () => {
+            document.getElementById('videoModal').style.display = 'none';
+        });
+
+        // Show initial projects
+        showProjects();
+    </script>
 </body>
 </html>
