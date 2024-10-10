@@ -54,30 +54,29 @@
         }
 
         nav {
-            margin: 20px 0;
+            margin: 20px auto; /* Center nav horizontally */
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
-            border-radius: 50px; /* Rounded edges */
-            padding: 15px; /* Padding around the navigation */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            border-radius: 25px; /* Rounded corners */
+            padding: 10px 20px; /* Padding around the nav items */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+            display: inline-block; /* Make the nav fit its content */
         }
 
         nav a {
-            margin: 20px auto; /* Center nav horizontally */
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
-    border-radius: 25px; /* Rounded corners */
-    padding: 10px 20px; /* Padding around the nav items */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    display: inline-block; /* Make the nav fit its content */
-}
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         nav a:hover {
-            background-color: #fff; /* Change background on hover */
-            color: #000; /* Change text color on hover */
-            transform: scale(1.1); /* Slight scale up on hover */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow effect on hover */
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.1);
         }
 
         .logo-container {
