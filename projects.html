@@ -116,6 +116,11 @@
             max-height: 90%;
         }
 
+        .lightbox video {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
         .lightbox:target {
             display: flex;
         }
@@ -172,9 +177,9 @@
             gap: 20px;
         }
 
-        .video-container iframe {
+        .video-container video {
             width: 45%;
-            height: 300px; /* Adjust height as needed */
+            height: auto; /* Adjust height as needed */
         }
     </style>
 </head>
@@ -309,8 +314,14 @@
     <!-- Video Modal -->
     <div id="videoModal" class="lightbox">
         <div class="video-container">
-            <iframe src="your_video_link_1" frameborder="0" allowfullscreen></iframe>
-            <iframe src="your_video_link_2" frameborder="0" allowfullscreen></iframe>
+            <video controls>
+                <source src="path_to_your_video_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="path_to_your_video_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <a href="#" class="close">&times;</a>
     </div>
