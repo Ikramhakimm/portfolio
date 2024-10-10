@@ -166,40 +166,15 @@
             display: none;
         }
 
-        /* Video modal styles */
-        .video-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-modal iframe {
-            width: 80%;
-            height: 80%;
-        }
-
-        .video-modal:target {
+        .video-container {
             display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .video-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: black;
-            font-size: 30px;
-            padding: 5px 10px;
-            border-radius: 50%;
-            text-decoration: none;
-            cursor: pointer;
+        .video-container iframe {
+            width: 45%;
+            height: 300px; /* Adjust height as needed */
         }
     </style>
 </head>
@@ -283,73 +258,108 @@
                 <p>Food Packaging</p>
             </div>
         </div>
-        
         <div class="pagination">
-            <button id="prevButton" class="hidden">Previous</button>
-            <button id="nextButton">Next</button>
+            <button id="prevPage">Previous</button>
+            <button id="seeMore">See More</button>
+            <button id="nextPage">Next</button>
         </div>
-        
-        <button id="seeMoreButton">See More</button>
+    </div>
+
+    <div id="lightbox1" class="lightbox">
+        <img src="tryy.png" alt="Full image 1">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox2" class="lightbox">
+        <img src="tryyy.png" alt="Full image 2">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox3" class="lightbox">
+        <img src="tryyyy.png" alt="Full image 3">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox4" class="lightbox">
+        <img src="tryyyyy.png" alt="Full image 4">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox5" class="lightbox">
+        <img src="fullll.png" alt="Full image 5">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox6" class="lightbox">
+        <img src="meja.png" alt="Full image 6">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox7" class="lightbox">
+        <img src="posterr.png" alt="Full image 7">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox8" class="lightbox">
+        <img src="ikramposter.png" alt="Full image 8">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox9" class="lightbox">
+        <img src="kereteee.png" alt="Current Project">
+        <a href="#" class="close">&times;</a>
+    </div>
+    <div id="lightbox10" class="lightbox">
+        <img src="di.png" alt="Food Packaging">
+        <a href="#" class="close">&times;</a>
     </div>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="video-modal">
-        <a href="#close" class="video-close">&times;</a>
-        <iframe src="https://www.youtube.com/embed/your-video-id1" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/your-video-id2" frameborder="0" allowfullscreen></iframe>
+    <div id="videoModal" class="lightbox">
+        <div class="video-container">
+            <iframe src="your_video_link_1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="your_video_link_2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <a href="#" class="close">&times;</a>
     </div>
 
     <footer>
-        <p>&copy; 2024 Your Name</p>
+        <p>&copy; 2024 My Projects. All rights reserved.</p>
     </footer>
 
     <script>
-        const nextButton = document.getElementById('nextButton');
-        const prevButton = document.getElementById('prevButton');
-        const projectContainer = document.getElementById('projectContainer');
-        const seeMoreButton = document.getElementById('seeMoreButton');
-
         let currentPage = 0;
-        const itemsPerPage = 4;
-        const projects = document.querySelectorAll('.project-container');
+        const projectsPerPage = 4; // Adjust number of projects shown per page
 
-        function showProjects() {
-            projects.forEach((project, index) => {
-                project.classList.add('hidden');
-                if (index >= currentPage * itemsPerPage && index < (currentPage + 1) * itemsPerPage) {
-                    project.classList.remove('hidden');
+        function updateProjects() {
+            const projectContainers = document.querySelectorAll('.project-container');
+            projectContainers.forEach((project, index) => {
+                project.classList.add('hidden'); // Hide all projects
+                if (index >= currentPage * projectsPerPage && index < (currentPage + 1) * projectsPerPage) {
+                    project.classList.remove('hidden'); // Show projects for the current page
                 }
             });
-
-            prevButton.classList.toggle('hidden', currentPage === 0);
-            prevButton.classList.toggle('hidden', currentPage === Math.ceil(projects.length / itemsPerPage) - 1);
         }
 
-        nextButton.addEventListener('click', () => {
-            if (currentPage < Math.ceil(projects.length / itemsPerPage) - 1) {
-                currentPage++;
-                showProjects();
-            }
-        });
-
-        prevButton.addEventListener('click', () => {
+        document.getElementById('prevPage').addEventListener('click', () => {
             if (currentPage > 0) {
                 currentPage--;
-                showProjects();
+                updateProjects();
             }
         });
 
-        seeMoreButton.addEventListener('click', () => {
-            document.getElementById('videoModal').style.display = 'flex';
+        document.getElementById('nextPage').addEventListener('click', () => {
+            const projectContainers = document.querySelectorAll('.project-container');
+            if (currentPage < Math.ceil(projectContainers.length / projectsPerPage) - 1) {
+                currentPage++;
+                updateProjects();
+            }
         });
 
-        // Close video modal
-        document.querySelector('.video-close').addEventListener('click', () => {
-            document.getElementById('videoModal').style.display = 'none';
+        document.getElementById('seeMore').addEventListener('click', () => {
+            document.getElementById('videoModal').style.display = 'flex'; // Show the video modal
         });
 
-        // Show initial projects
-        showProjects();
+        document.querySelectorAll('.close').forEach(closeButton => {
+            closeButton.addEventListener('click', () => {
+                document.getElementById('videoModal').style.display = 'none'; // Hide the video modal
+            });
+        });
+
+        // Initial project update
+        updateProjects();
     </script>
 </body>
 </html>
