@@ -181,6 +181,21 @@
             width: 45%;
             height: auto; /* Adjust height as needed */
         }
+
+        #seeMoreButton {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #seeMoreButton:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -266,6 +281,23 @@
             <button id="prevButton" onclick="previousPage()">Previous</button>
             <button id="nextButton" onclick="nextPage()">Next</button>
         </div>
+
+        <div class="video-section" id="videoSection" style="display: none;">
+            <h3>My Videos</h3>
+            <div class="video-container">
+                <video controls>
+                    <source src="ikram env 2023-09-11 00-07-57.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video controls>
+                    <source src="Preview of Productive Flame 2023-06-14 11-15-24.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <button id="seeMoreButton" onclick="showVideos()">See More</button>
+
     </div>
 
     <div id="lightbox1" class="lightbox">
@@ -349,6 +381,13 @@
                 currentPage--;
                 updateProjectVisibility();
             }
+        }
+
+        // Function to show video section
+        function showVideos() {
+            const videoSection = document.getElementById('videoSection');
+            videoSection.style.display = 'block'; // Show video section
+            document.getElementById('seeMoreButton').style.display = 'none'; // Hide "See More" button
         }
 
         // Initial call to set visibility and pagination button state
