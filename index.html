@@ -183,7 +183,6 @@
         }
 
         #seeMoreButton {
-            margin-top: 20px;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border: none;
@@ -191,16 +190,12 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 20px auto; /* Centering */
+            display: none; /* Initially hidden */
         }
 
         #seeMoreButton:hover {
             background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .centered-button {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -283,11 +278,14 @@
                 <p>Food Packaging</p>
             </div>
         </div>
+
         <div class="pagination" id="pagination">
             <button id="prevButton" onclick="previousPage()">Previous</button>
             <button id="nextButton" onclick="nextPage()">Next</button>
         </div>
-        
+
+        <button id="seeMoreButton" onclick="showVideoSection()">See More</button>
+
         <div class="video-section" id="videoSection" style="display: none;">
             <h3>My Videos</h3>
             <div class="video-container">
@@ -301,11 +299,6 @@
                 </video>
             </div>
         </div>
-
-        <div class="centered-button">
-            <button id="seeMoreButton" style="display: none;" onclick="showVideoSection()">See More</button>
-        </div>
-
     </div>
 
     <footer>
