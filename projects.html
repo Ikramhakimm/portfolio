@@ -35,7 +35,8 @@
         }
 
         nav {
-            text-align: center;
+            display: flex; /* Change to flexbox for better alignment */
+            justify-content: center; /* Center align the links */
             margin: 20px 0;
             animation-delay: 1s;
         }
@@ -281,118 +282,101 @@
             <button id="prevButton" onclick="previousPage()">Previous</button>
             <button id="nextButton" onclick="nextPage()">Next</button>
         </div>
-        
+
         <div class="video-section" id="videoSection" style="display: none;">
             <h3>My Videos</h3>
             <div class="video-container">
                 <video controls>
-                    <source src="ikram env 2023-09-05 09-50-05.mp4" type="video/mp4">
+                    <source src="video1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <video controls>
-                    <source src="your-video-file.mp4" type="video/mp4">
+                    <source src="video2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
+            <button id="seeMoreButton" onclick="seeMore()">See More</button>
         </div>
-        <button id="seeMoreButton" style="display: none;" onclick="showVideoSection()">See More</button>
+
     </div>
 
     <footer>
         <p>&copy; 2024 Ikram Hakim. All rights reserved.</p>
     </footer>
 
-    <div class="lightbox" id="lightbox1">
-        <a href="#!" class="close">&times;</a>
-        <img src="tryy.png" alt="Project 1">
+    <div id="lightbox1" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="tryy.png" alt="Lightbox Image 1">
     </div>
-    <div class="lightbox" id="lightbox2">
-        <a href="#!" class="close">&times;</a>
-        <img src="tryyy.png" alt="Project 2">
+    <div id="lightbox2" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="tryyy.png" alt="Lightbox Image 2">
     </div>
-    <div class="lightbox" id="lightbox3">
-        <a href="#!" class="close">&times;</a>
-        <img src="tryyyy.png" alt="Project 3">
+    <div id="lightbox3" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="tryyyy.png" alt="Lightbox Image 3">
     </div>
-    <div class="lightbox" id="lightbox4">
-        <a href="#!" class="close">&times;</a>
-        <video src="ikram env 2023-09-05 09-50-05.mp4" controls></video>
+    <div id="lightbox4" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="tryyyyy.png" alt="Lightbox Image 4">
     </div>
-    <div class="lightbox" id="lightbox5">
-        <a href="#!" class="close">&times;</a>
-        <img src="fullll.png" alt="Project 5">
+    <div id="lightbox5" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="fullll.png" alt="Lightbox Image 5">
     </div>
-    <div class="lightbox" id="lightbox6">
-        <a href="#!" class="close">&times;</a>
-        <img src="meja.png" alt="Project 6">
+    <div id="lightbox6" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="meja.png" alt="Lightbox Image 6">
     </div>
-    <div class="lightbox" id="lightbox7">
-        <a href="#!" class="close">&times;</a>
-        <img src="posterr.png" alt="Project 7">
+    <div id="lightbox7" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="posterr.png" alt="Lightbox Image 7">
     </div>
-    <div class="lightbox" id="lightbox8">
-        <a href="#!" class="close">&times;</a>
-        <img src="ikramposter.png" alt="Project 8">
+    <div id="lightbox8" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="ikramposter.png" alt="Lightbox Image 8">
     </div>
-    <div class="lightbox" id="lightbox9">
-        <a href="#!" class="close">&times;</a>
-        <img src="kereteee.png" alt="Project 9">
+    <div id="lightbox9" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="kereteee.png" alt="Lightbox Image 9">
     </div>
-    <div class="lightbox" id="lightbox10">
-        <a href="#!" class="close">&times;</a>
-        <img src="di.png" alt="New Project">
+    <div id="lightbox10" class="lightbox">
+        <a href="#" class="close">X</a>
+        <img src="di.png" alt="Lightbox Image 10">
     </div>
 
     <script>
-        const nextButton = document.getElementById('nextButton');
-        const prevButton = document.getElementById('prevButton');
-        const projectContainers = document.querySelectorAll('.project-container');
-        const seeMoreButton = document.getElementById('seeMoreButton');
-        const videos = document.querySelectorAll('.lightbox video');
-
         let currentPage = 0;
-        const itemsPerPage = 4;
+        const projectsPerPage = 4;
+        const projects = document.querySelectorAll('.project-container');
+        const totalPages = Math.ceil(projects.length / projectsPerPage);
 
-        function updatePagination() {
-            projectContainers.forEach((container, index) => {
-                container.classList.toggle('hidden', index < currentPage * itemsPerPage || index >= (currentPage + 1) * itemsPerPage);
+        function showPage(page) {
+            projects.forEach((project, index) => {
+                project.classList.toggle('hidden', Math.floor(index / projectsPerPage) !== page);
             });
-            prevButton.disabled = currentPage === 0;
-            nextButton.disabled = currentPage === Math.ceil(projectContainers.length / itemsPerPage) - 1;
-
-            // Show or hide the "See More" button
-            seeMoreButton.style.display = currentPage === Math.ceil(projectContainers.length / itemsPerPage) - 1 ? 'block' : 'none';
         }
 
         function nextPage() {
-            currentPage++;
-            updatePagination();
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
         }
 
         function previousPage() {
-            currentPage--;
-            updatePagination();
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
         }
 
-        function showVideoSection() {
-            document.getElementById('videoSection').style.display = 'block';
+        function seeMore() {
+            const videoSection = document.getElementById('videoSection');
+            videoSection.style.display = 'block';
         }
 
-        videos.forEach(video => {
-            video.addEventListener('click', function () {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) { // Firefox
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) { // IE/Edge
-                    video.msRequestFullscreen();
-                }
-            });
-        });
-
-        updatePagination();
+        showPage(currentPage);
     </script>
 </body>
 </html>
