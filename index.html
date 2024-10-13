@@ -33,9 +33,9 @@
             position: fixed; /* Fixed position */
             top: 50%; /* Center vertically */
             left: 50%; /* Center horizontally */
-            width: 100%; /* Cover the entire viewport */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 100%; /* Prevent overflowing */
+            width: 100vw; /* Cover the entire viewport width */
+            height: 100vh; /* Cover the entire viewport height */
+            object-fit: cover; /* Cover while maintaining aspect ratio */
             transform: translate(-50%, -50%); /* Adjust to center */
             z-index: -1; /* Send video to back */
         }
