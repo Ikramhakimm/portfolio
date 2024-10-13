@@ -31,46 +31,44 @@
 
         video {
             position: fixed; /* Fixed position */
-            top: 0;
-            left: 0;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
             width: 100%; /* Cover the entire viewport */
-            height: 100%; /* Cover the entire viewport */
-            object-fit: cover; /* Maintain aspect ratio and cover */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 100%; /* Prevent overflowing */
+            transform: translate(-50%, -50%); /* Adjust to center */
             z-index: -1; /* Send video to back */
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px 0; /* Header padding */
+            padding: 10px 0; /* Adjusted header padding */
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         header h1 {
             margin: 0;
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            font-size: 2.5rem; /* Adjust font size for mobile */
         }
 
         nav {
-            margin: 20px auto; /* Center nav horizontally */
+            margin: 10px auto; /* Center nav horizontally */
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+            background-color: rgba(0, 0, 0, 0.6);
             border-radius: 30px; /* Rounded corners */
-            padding: 15px 30px; /* Increased padding to make bg larger */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+            padding: 10px 20px; /* Reduced padding for mobile */
             display: inline-block; /* Make the nav fit its content */
         }
 
         nav a {
             text-decoration: none;
             color: #fff;
-            padding: 10px 20px;
+            padding: 8px 15px; /* Adjust padding */
             border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.2);
-            margin: 10px;
+            margin: 5px; /* Reduced margin */
             transition: background-color 0.3s, transform 0.2s;
+            display: inline-block; /* Align properly */
         }
 
         nav a:hover {
@@ -82,7 +80,7 @@
         .logo-container {
             display: flex;
             justify-content: center; /* Center logo horizontally */
-            margin: 20px 0; /* Spacing above and below logo */
+            margin: 10px 0; /* Reduced spacing */
             opacity: 0; /* Start with hidden logo */
             animation: logoFadeIn 1s forwards; /* Apply fade-in animation */
             animation-delay: 0.5s; /* Delay for logo fade-in */
@@ -95,12 +93,12 @@
         }
 
         .logo-container img {
-            height: 350px; /* Increase logo height */
-            filter: brightness(500); /* Make logo black */
+            height: 250px; /* Adjust logo height */
+            filter: brightness(500); /* Make logo bright */
         }
 
         .content {
-            padding: 20px; /* Reduced padding to move content up */
+            padding: 10px; /* Reduced padding for mobile */
             text-align: center;
             flex: 1; /* Allow this section to grow and take available space */
             position: relative; /* Ensure content is above video */
@@ -118,16 +116,15 @@
         }
 
         .content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px; /* Adjusted margin */
-            color: #fff;
+            font-size: 2rem; /* Adjusted font size for mobile */
+            margin-bottom: 10px;
         }
 
         .content p {
-            max-width: 700px;
+            max-width: 90%; /* Allow some padding on mobile */
             margin: 0 auto;
-            line-height: 1.8;
-            font-size: 1.2rem;
+            line-height: 1.6;
+            font-size: 1rem; /* Adjust font size for mobile */
             color: #f4f4f4;
         }
 
@@ -147,26 +144,25 @@
         }
 
         /* Responsive design */
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 3rem; /* Larger header for desktop */
             }
 
             nav a {
-                font-size: 1rem;
-                padding: 8px 15px;
+                font-size: 1.2rem;
             }
 
             .content h2 {
-                font-size: 2rem;
+                font-size: 2.5rem; /* Larger content heading for desktop */
             }
 
             .content p {
-                font-size: 1rem;
+                font-size: 1.2rem; /* Larger content paragraph for desktop */
             }
 
             .logo-container img {
-                height: 250px; /* Adjust logo height for smaller screens */
+                height: 350px; /* Increase logo height for desktop */
             }
         }
     </style>
