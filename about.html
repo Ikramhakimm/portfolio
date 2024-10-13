@@ -65,6 +65,7 @@
 
         .content {
             display: flex; /* Use flexbox for layout */
+            flex-direction: row; /* Default direction for desktop */
             align-items: center; /* Center items vertically */
             justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
@@ -153,7 +154,7 @@
             }
 
             .content {
-                flex-direction: column; /* Stack content vertically */
+                flex-direction: column; /* Stack content vertically for mobile */
                 padding: 15px; /* Adjust padding for mobile */
             }
 
