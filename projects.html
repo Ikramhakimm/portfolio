@@ -281,12 +281,12 @@
             <button id="prevButton" onclick="previousPage()">Previous</button>
             <button id="nextButton" onclick="nextPage()">Next</button>
         </div>
-
+        
         <div class="video-section" id="videoSection" style="display: none;">
             <h3>My Videos</h3>
             <div class="video-container">
                 <video controls>
-                    <source src="ikram env 2023-09-11 00-07-57.mp4" type="video/mp4">
+                    <source src="ikram env 2023-09-05 09-50-05.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <video controls>
@@ -294,8 +294,8 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <button id="seeMoreButton" onclick="document.getElementById('videoSection').style.display='block'">See More</button>
         </div>
+        <button id="seeMoreButton" style="display: none;" onclick="showVideoSection()">See More</button>
     </div>
 
     <footer>
@@ -316,7 +316,7 @@
     </div>
     <div class="lightbox" id="lightbox4">
         <a href="#!" class="close">&times;</a>
-        <video src="your-video-file.mp4" controls></video>
+        <video src="ikram env 2023-09-05 09-50-05.mp4" controls></video>
     </div>
     <div class="lightbox" id="lightbox5">
         <a href="#!" class="close">&times;</a>
@@ -347,6 +347,7 @@
         const nextButton = document.getElementById('nextButton');
         const prevButton = document.getElementById('prevButton');
         const projectContainers = document.querySelectorAll('.project-container');
+        const seeMoreButton = document.getElementById('seeMoreButton');
         const videos = document.querySelectorAll('.lightbox video');
 
         let currentPage = 0;
@@ -358,17 +359,24 @@
             });
             prevButton.disabled = currentPage === 0;
             nextButton.disabled = currentPage === Math.ceil(projectContainers.length / itemsPerPage) - 1;
+
+            // Show or hide the "See More" button
+            seeMoreButton.style.display = currentPage === Math.ceil(projectContainers.length / itemsPerPage) - 1 ? 'block' : 'none';
         }
 
-        nextButton.addEventListener('click', () => {
+        function nextPage() {
             currentPage++;
             updatePagination();
-        });
+        }
 
-        prevButton.addEventListener('click', () => {
+        function previousPage() {
             currentPage--;
             updatePagination();
-        });
+        }
+
+        function showVideoSection() {
+            document.getElementById('videoSection').style.display = 'block';
+        }
 
         videos.forEach(video => {
             video.addEventListener('click', function () {
