@@ -47,6 +47,7 @@
             padding: 10px 15px;
             transition: background-color 0.3s;
             border-radius: 5px;
+            display: inline-block; /* Ensures equal height and padding */
         }
 
         nav a:hover {
@@ -111,12 +112,7 @@
             align-items: center;
         }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox video {
+        .lightbox img, .lightbox video {
             max-width: 90%;
             max-height: 90%;
         }
@@ -282,20 +278,18 @@
             <button id="nextButton" onclick="nextPage()">Next</button>
         </div>
 
-        <div class="video-section" id="videoSection" style="display: none;">
+        <div class="video-container">
             <h3>My Videos</h3>
-            <div class="video-container">
-                <video controls onclick="toggleFullscreen(this)">
-                    <source src="ikram env 2023-09-11 08-35-18.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <video controls onclick="toggleFullscreen(this)">
-                    <source src="ikram 2023-09-11 08-35-43.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <button id="seeMoreButton" onclick="seeMoreVideos()">See More</button>
+            <video controls onclick="toggleFullscreen(this)">
+                <source src="ikram 2023-09-11 08-35-18.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls onclick="toggleFullscreen(this)">
+                <source src="ikram 2023-09-11 08-35-43.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
+        <button id="seeMoreButton" onclick="seeMoreVideos()">See More</button>
     </div>
 
     <footer>
@@ -348,15 +342,18 @@
         }
 
         function seeMoreVideos() {
-            const hiddenVideos = document.querySelectorAll('.video-container .hidden');
+            const hiddenVideos = document.querySelectorAll('.video-container video.hidden');
             if (hiddenVideos.length > 0) {
                 hiddenVideos[0].classList.remove('hidden');
-                if (hiddenVideos.length === 1) {
-                    document.getElementById('seeMoreButton').style.display = 'none';
-                }
+            }
+
+            // Hide the See More button if there are no hidden videos left
+            if (hiddenVideos.length <= 1) {
+                document.getElementById('seeMoreButton').style.display = 'none';
             }
         }
 
+        // Show the first set of projects initially
         showProjects(currentPage);
     </script>
 </body>
