@@ -66,11 +66,11 @@
         .content {
             display: flex; /* Use flexbox for layout */
             flex-direction: row; /* Default direction for desktop */
-            align-items: center; /* Center items vertically */
+            align-items: flex-start; /* Align items to the top */
             justify-content: center; /* Center horizontally */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px auto; /* Center the content with auto margins */
-            padding: 20px; /* Adjusted padding for mobile */
+            padding: 20px; /* Adjusted padding */
             border-radius: 15px; /* Rounded corners */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
             gap: 20px; /* Space between image and text */
@@ -100,6 +100,7 @@
             flex-direction: column; /* Stack the text vertically */
             justify-content: flex-start; /* Align text to the top */
             align-items: flex-start; /* Align text to the left */
+            max-width: 400px; /* Set max width for the info section */
         }
 
         footer {
