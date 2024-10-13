@@ -8,47 +8,45 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('peakpx.jpg') no-repeat center center fixed;
+            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
             background-size: cover;
             color: white;
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            min-height: 100vh; /* Ensure it takes full height */
+            opacity: 0; /* Start with hidden body for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
         }
 
         @keyframes fadeIn {
             to {
-                opacity: 1;
+                opacity: 1; /* Final opacity */
             }
         }
 
         header {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
             width: 100%;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 0.5s;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay for header */
         }
 
         h1 {
             margin: 0;
         }
 
-        /* Simple horizontal navigation layout */
         nav {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            width: 100%;
             text-align: center;
-            animation: fadeIn 1s forwards;
-            animation-delay: 1s;
+            margin: 20px 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1s; /* Delay for nav */
         }
 
         nav a {
@@ -61,46 +59,47 @@
         }
 
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
         }
 
         .content {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
-            max-width: 600px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 1.5s;
+            max-width: 600px; /* Limit width for better readability */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 1.5s; /* Delay for content */
         }
 
         img {
-            width: 400px;
-            height: auto;
-            border-radius: 10%;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: transform 0.3s;
+            width: 400px; /* Set larger width for the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10%; /* Slightly round the corners */
+            margin: 20px 0; /* Space around the image */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: transform 0.3s; /* Smooth scaling */
         }
 
         img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); /* Scale image slightly on hover */
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
             position: relative;
             bottom: 0;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 2s;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
         }
 
+        /* Fullscreen styles */
         .fullscreen {
             position: fixed;
             top: 0;
@@ -109,22 +108,22 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            display: none;
+            display: none; /* Initially hidden */
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            opacity: 0; /* Initial opacity for fade effect */
+            transition: opacity 0.5s ease; /* Fade transition */
         }
 
         .fullscreen.show {
-            display: flex;
-            opacity: 1;
+            display: flex; /* Show the fullscreen overlay */
+            opacity: 1; /* Full opacity when shown */
         }
 
         .fullscreen img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 10%;
+            border-radius: 10%; /* Slightly round the corners */
         }
     </style>
 </head>
@@ -150,10 +149,10 @@
         <p>I study at KPTM as a game designer</p>
         
         <h3>Experience</h3>
-        <p>Experience in creating a game</p>
+        <p>Experience on creating a game</p>
         
         <h3>Skills</h3>
-        <p>Can do editing, programming, and modeling</p>
+        <p>Can do editing, programming and modelling</p>
     </div>
 
     <footer>
