@@ -285,114 +285,79 @@
         <div class="video-section" id="videoSection" style="display: none;">
             <h3>My Videos</h3>
             <div class="video-container">
-                <video controls>
-                    <source src="ikram env 2023-09-11 00-07-57.mp4" type="video/mp4">
+                <video controls onclick="toggleFullscreen(this)">
+                    <source src="ikram env 2023-09-11 08-35-18.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <video controls>
-                    <source src="Preview of Productive Flame 2023-06-14 11-15-24.mp4" type="video/mp4">
+                <video controls onclick="toggleFullscreen(this)">
+                    <source src="ikram 2023-09-11 08-35-43.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
+            <button id="seeMoreButton" onclick="seeMoreVideos()">See More</button>
         </div>
-
-        <button id="seeMoreButton" onclick="showVideos()">See More</button>
-
-    </div>
-
-    <div id="lightbox1" class="lightbox">
-        <img src="tryy.png" alt="Full image 1">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox2" class="lightbox">
-        <img src="tryyy.png" alt="Full image 2">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox3" class="lightbox">
-        <img src="tryyyy.png" alt="Full image 3">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox4" class="lightbox">
-        <img src="tryyyyy.png" alt="Full image 4">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox5" class="lightbox">
-        <img src="fullll.png" alt="Full image 5">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox6" class="lightbox">
-        <img src="meja.png" alt="Full image 6">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox7" class="lightbox">
-        <img src="posterr.png" alt="Full image 7">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox8" class="lightbox">
-        <img src="ikramposter.png" alt="Full image 8">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox9" class="lightbox">
-        <img src="kereteee.png" alt="Full image 9">
-        <a href="#" class="close">&times;</a>
-    </div>
-    <div id="lightbox10" class="lightbox">
-        <img src="di.png" alt="Full image 10">
-        <a href="#" class="close">&times;</a>
     </div>
 
     <footer>
-        <p>&copy; 2024 Ikram Hakim. All rights reserved.</p>
+        <p>&copy; 2023 Ikram Hakim</p>
     </footer>
 
     <script>
+        const projectsPerPage = 4;
         let currentPage = 1;
-        const projectsPerPage = 4; // Show 4 projects per page
-        const projects = document.querySelectorAll('.project-container');
-        const totalPages = Math.ceil(projects.length / projectsPerPage);
-        
-        function updateProjectVisibility() {
+
+        function showProjects(page) {
+            const projects = document.querySelectorAll('.project-container');
+            const totalPages = Math.ceil(projects.length / projectsPerPage);
+            const start = (page - 1) * projectsPerPage;
+            const end = start + projectsPerPage;
+
             projects.forEach((project, index) => {
-                project.classList.add('hidden');
-                if (index < currentPage * projectsPerPage && index >= (currentPage - 1) * projectsPerPage) {
-                    project.classList.remove('hidden');
-                }
+                project.classList.toggle('hidden', index < start || index >= end);
             });
-            updatePaginationButtons(); // Update button visibility
-        }
 
-        function updatePaginationButtons() {
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            
-            prevButton.style.display = currentPage === 1 ? 'none' : 'inline-block';
-            nextButton.style.display = currentPage === totalPages ? 'none' : 'inline-block';
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                updateProjectVisibility();
-            }
+            document.getElementById('prevButton').disabled = page === 1;
+            document.getElementById('nextButton').disabled = page === totalPages;
         }
 
         function previousPage() {
             if (currentPage > 1) {
                 currentPage--;
-                updateProjectVisibility();
+                showProjects(currentPage);
             }
         }
 
-        // Function to show video section
-        function showVideos() {
-            const videoSection = document.getElementById('videoSection');
-            videoSection.style.display = 'block'; // Show video section
-            document.getElementById('seeMoreButton').style.display = 'none'; // Hide "See More" button
+        function nextPage() {
+            const totalPages = Math.ceil(document.querySelectorAll('.project-container').length / projectsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                showProjects(currentPage);
+            }
         }
 
-        // Initial call to set visibility and pagination button state
-        updateProjectVisibility(); 
-    </script>
+        function toggleFullscreen(video) {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
 
+        function seeMoreVideos() {
+            const hiddenVideos = document.querySelectorAll('.video-container .hidden');
+            if (hiddenVideos.length > 0) {
+                hiddenVideos[0].classList.remove('hidden');
+                if (hiddenVideos.length === 1) {
+                    document.getElementById('seeMoreButton').style.display = 'none';
+                }
+            }
+        }
+
+        showProjects(currentPage);
+    </script>
 </body>
 </html>
