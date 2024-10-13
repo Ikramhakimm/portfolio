@@ -8,98 +8,168 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('peakpx.jpg') no-repeat center center fixed; /* Change to your background image */
+            background: url('peakpx.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            justify-content: center; /* Center content vertically */
-            min-height: 100vh; /* Ensure it takes full height */
-            opacity: 0; /* Start with hidden body for fade-in effect */
-            animation: fadeIn 1s forwards; /* Fade-in animation */
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         @keyframes fadeIn {
             to {
-                opacity: 1; /* Final opacity */
+                opacity: 1;
             }
         }
 
         header {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            background-color: rgba(0, 0, 0, 0.8);
             width: 100%;
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 0.5s; /* Delay for header */
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
         }
 
         h1 {
             margin: 0;
         }
 
+        /* Mobile-friendly navigation */
         nav {
-            text-align: center;
-            margin: 20px 0;
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 1s; /* Delay for nav */
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+            padding: 10px;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s;
         }
 
-        nav a {
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
             padding: 10px 15px;
             transition: background-color 0.3s;
             border-radius: 5px;
         }
 
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .nav-links.mobile {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 200px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .nav-links.mobile li {
+            margin: 10px 0;
+        }
+
+        .nav-links.mobile.show {
+            display: flex;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none; /* Hide the default links on smaller screens */
+            }
+
+            .nav-links.mobile.show {
+                display: flex;
+            }
         }
 
         .content {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for content */
+            background-color: rgba(0, 0, 0, 0.7);
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
-            max-width: 600px; /* Limit width for better readability */
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 1.5s; /* Delay for content */
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
         }
 
         img {
-            width: 400px; /* Set larger width for the image */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10%; /* Slightly round the corners */
-            margin: 20px 0; /* Space around the image */
-            cursor: pointer; /* Change cursor to pointer */
-            transition: transform 0.3s; /* Smooth scaling */
+            width: 400px;
+            height: auto;
+            border-radius: 10%;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
         img:hover {
-            transform: scale(1.05); /* Scale image slightly on hover */
+            transform: scale(1.05);
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
+            background-color: rgba(0, 0, 0, 0.8);
             width: 100%;
             position: relative;
             bottom: 0;
-            opacity: 0; /* Start with opacity 0 */
-            animation: fadeIn 1s forwards; /* Apply fade-in animation */
-            animation-delay: 2s; /* Delay for footer */
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s;
         }
 
-        /* Fullscreen styles */
         .fullscreen {
             position: fixed;
             top: 0;
@@ -108,22 +178,22 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            display: none; /* Initially hidden */
+            display: none;
             justify-content: center;
             align-items: center;
-            opacity: 0; /* Initial opacity for fade effect */
-            transition: opacity 0.5s ease; /* Fade transition */
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         .fullscreen.show {
-            display: flex; /* Show the fullscreen overlay */
-            opacity: 1; /* Full opacity when shown */
+            display: flex;
+            opacity: 1;
         }
 
         .fullscreen img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 10%; /* Slightly round the corners */
+            border-radius: 10%;
         }
     </style>
 </head>
@@ -134,25 +204,37 @@
     </header>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
+        <button class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <ul class="nav-links mobile" id="mobileMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
     <div class="content">
-        <img src="resume.png" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
-        
+        <img src="resume.png" alt="resume" id="resumeImage">
         <h3>Education</h3>
         <p>I study at KPTM as a game designer</p>
-        
         <h3>Experience</h3>
-        <p>Experience on creating a game</p>
-        
+        <p>Experience in creating a game</p>
         <h3>Skills</h3>
-        <p>Can do editing, programming and modelling</p>
+        <p>Can do editing, programming, and modeling</p>
     </div>
 
     <footer>
@@ -161,22 +243,28 @@
 
     <!-- Fullscreen Image Overlay -->
     <div class="fullscreen" id="fullscreen">
-        <img src="resume.png" alt="resume fullscreen" id="fullscreenImage"> <!-- Replace with your resume picture -->
+        <img src="resume.png" alt="resume fullscreen" id="fullscreenImage">
     </div>
 
     <script>
+        // Hamburger Menu toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
         // Get elements
         const resumeImage = document.getElementById('resumeImage');
         const fullscreen = document.getElementById('fullscreen');
 
         // Add click event to the resume image
         resumeImage.onclick = function() {
-            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
+            fullscreen.classList.add('show');
         }
 
         // Close fullscreen when clicking on the overlay
         fullscreen.onclick = function() {
-            fullscreen.classList.remove('show'); // Remove show class to hide the fullscreen overlay
+            fullscreen.classList.remove('show');
         }
     </script>
 
