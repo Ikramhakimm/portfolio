@@ -41,96 +41,27 @@
             margin: 0;
         }
 
-        /* Mobile-friendly navigation */
+        /* Simple horizontal navigation layout */
         nav {
-            width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            position: relative;
             padding: 10px;
+            width: 100%;
+            text-align: center;
             animation: fadeIn 1s forwards;
             animation-delay: 1s;
         }
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-links li {
-            margin: 0 10px;
-        }
-
-        .nav-links a {
+        nav a {
             color: white;
             text-decoration: none;
+            margin: 0 15px;
             padding: 10px 15px;
             transition: background-color 0.3s;
             border-radius: 5px;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 10;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-
-        .hamburger div {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-        }
-
-        .nav-links.mobile {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.9);
-            width: 200px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .nav-links.mobile li {
-            margin: 10px 0;
-        }
-
-        .nav-links.mobile.show {
-            display: flex;
-        }
-
-        /* Media Queries for responsiveness */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none; /* Hide the default links on smaller screens */
-            }
-
-            .nav-links.mobile.show {
-                display: flex;
-            }
         }
 
         .content {
@@ -204,35 +135,23 @@
     </header>
 
     <nav>
-        <button class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <ul class="nav-links mobile" id="mobileMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
     <div class="content">
-        <img src="resume.png" alt="resume" id="resumeImage">
+        <img src="resume.png" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
+        
         <h3>Education</h3>
         <p>I study at KPTM as a game designer</p>
+        
         <h3>Experience</h3>
         <p>Experience in creating a game</p>
+        
         <h3>Skills</h3>
         <p>Can do editing, programming, and modeling</p>
     </div>
@@ -243,28 +162,22 @@
 
     <!-- Fullscreen Image Overlay -->
     <div class="fullscreen" id="fullscreen">
-        <img src="resume.png" alt="resume fullscreen" id="fullscreenImage">
+        <img src="resume.png" alt="resume fullscreen" id="fullscreenImage"> <!-- Replace with your resume picture -->
     </div>
 
     <script>
-        // Hamburger Menu toggle
-        function toggleMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('show');
-        }
-
         // Get elements
         const resumeImage = document.getElementById('resumeImage');
         const fullscreen = document.getElementById('fullscreen');
 
         // Add click event to the resume image
         resumeImage.onclick = function() {
-            fullscreen.classList.add('show');
+            fullscreen.classList.add('show'); // Add show class to display the fullscreen overlay
         }
 
         // Close fullscreen when clicking on the overlay
         fullscreen.onclick = function() {
-            fullscreen.classList.remove('show');
+            fullscreen.classList.remove('show'); // Remove show class to hide the fullscreen overlay
         }
     </script>
 
