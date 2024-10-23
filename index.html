@@ -14,6 +14,9 @@
         body {
             font-family: Arial, sans-serif;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Video background styling */
@@ -59,13 +62,15 @@
             background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
         }
 
-        /* Centered logo */
+        /* Flex container for centering logo and description */
         .logo-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            flex: 1; /* This allows the logo container to grow and take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            transition: opacity 0.5s ease-out; /* Fade effect on scroll */
         }
 
         .logo-container img {
@@ -103,9 +108,6 @@
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
             color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
         }
     </style>
 </head>
@@ -133,19 +135,36 @@
     </nav>
 
     <!-- Centered logo -->
-    <div class="logo-container">
+    <div class="logo-container" id="logo-container">
         <img src="loggo.png" alt="Logo">
         <!-- Text below the logo -->
         <div class="description">
-            About This Page<br>
-            Hi, I'm Ikramhakim, a passionate game designer and developer with a focus on creating engaging and educational games.
+            Hi, I'm Ikram Hakim, a passionate game designer and developer with a focus on creating engaging and educational games.
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer from About Page -->
     <footer>
         <p>&copy; 2024 Ikramhakimm Page</p>
     </footer>
+
+    <script>
+        // JavaScript to handle fade-out effect on scroll
+        window.addEventListener('scroll', function() {
+            const logoContainer = document.getElementById('logo-container');
+            const scrollPosition = window.scrollY;
+            const maxScroll = 200; // Adjust this value to control when the fade happens
+
+            // Calculate the opacity based on scroll
+            let opacity = 1 - (scrollPosition / maxScroll);
+            if (opacity < 0) {
+                opacity = 0; // Prevent negative opacity
+            }
+
+            // Apply the fade effect
+            logoContainer.style.opacity = opacity;
+        });
+    </script>
 
 </body>
 </html>
