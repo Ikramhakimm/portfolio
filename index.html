@@ -70,7 +70,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            transition: opacity 0.5s ease-out; /* Fade effect on scroll */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 2s ease; /* Fade-in effect */
         }
 
         .logo-container img {
@@ -149,20 +150,10 @@
     </footer>
 
     <script>
-        // JavaScript to handle fade-out effect on scroll
-        window.addEventListener('scroll', function() {
+        // JavaScript to handle fade-in effect on page load
+        window.addEventListener('load', function() {
             const logoContainer = document.getElementById('logo-container');
-            const scrollPosition = window.scrollY;
-            const maxScroll = 200; // Adjust this value to control when the fade happens
-
-            // Calculate the opacity based on scroll
-            let opacity = 1 - (scrollPosition / maxScroll);
-            if (opacity < 0) {
-                opacity = 0; // Prevent negative opacity
-            }
-
-            // Apply the fade effect
-            logoContainer.style.opacity = opacity;
+            logoContainer.style.opacity = '1'; // Trigger the fade-in by setting opacity to 1
         });
     </script>
 
