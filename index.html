@@ -73,6 +73,13 @@
             height: auto;
         }
 
+        /* Description text under the logo */
+        .logo-container .description {
+            color: white;
+            font-size: 18px;
+            margin-top: 10px; /* Adjust spacing between logo and text */
+        }
+
         /* For responsive video background */
         @media (max-width: 768px) {
             .video-background {
@@ -82,6 +89,10 @@
 
             .logo-container img {
                 width: 200px; /* Adjust for smaller screens */
+            }
+
+            .logo-container .description {
+                font-size: 16px; /* Adjust text size for smaller screens */
             }
         }
 
@@ -124,12 +135,6 @@
     <!-- Centered logo -->
     <div class="logo-container">
         <img src="loggo.png" alt="Logo">
-    </div>
-
-    <!-- Footer from About Page -->
-    <footer>
-        <p>&copy; 2024 Ikramhakimm Page</p>
-    </footer>
-
-</body>
-</html>
+        <!-- Text below the logo -->
+        <div class="description">
+            Hi, I'm Ikram Hakim, a
