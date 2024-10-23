@@ -87,6 +87,23 @@
             transform: scale(1.05); /* Scale image slightly on hover */
         }
 
+        /* Download button */
+        .download-btn {
+            background-color: #ff6347; /* Button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px; /* Space above button */
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #e5533c; /* Darker shade on hover */
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -143,9 +160,7 @@
     </nav>
 
     <div class="content">
-        <a href="resume.png" download> <!-- Make image downloadable -->
-            <img src="resume.png" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
-        </a>
+        <img src="resume.png" alt="resume" id="resumeImage"> <!-- Replace with your resume picture -->
         
         <h3>Education</h3>
         <p>I study at KPTM as a game designer</p>
@@ -155,6 +170,11 @@
         
         <h3>Skills</h3>
         <p>Can do editing, programming and modelling</p>
+
+        <!-- Download Button -->
+        <a href="resume.png" download>
+            <button class="download-btn">Download Resume</button>
+        </a>
     </div>
 
     <footer>
