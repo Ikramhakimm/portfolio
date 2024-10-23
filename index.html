@@ -26,37 +26,28 @@
             z-index: -1; /* Behind everything */
         }
 
-        /* Header styling */
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
-            width: 100%;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-        }
-
         /* Navigation menu */
         nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Solid black background */
+            padding: 10px 0;
             text-align: center;
-            margin: 20px 0; /* Margin for spacing */
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px; /* Adjust margin for mobile */
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-            display: inline-block; /* Ensures proper click area */
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 0 20px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+            color: #ff6347; /* Highlight color on hover */
         }
 
         /* Centered logo */
@@ -69,8 +60,18 @@
         }
 
         .logo-container img {
-            width: 300px; /* Increase the size of the logo */
+            width: 200px; /* Adjusted size for larger logo */
             height: auto;
+        }
+
+        .description {
+            color: white;
+            font-size: 20px; /* Adjust font size as needed */
+            margin-top: 15px; /* Space between logo and description */
+            text-align: center;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for description */
         }
 
         /* For responsive video background */
@@ -78,10 +79,6 @@
             .video-background {
                 min-height: 100%;
                 width: auto;
-            }
-
-            .logo-container img {
-                width: 200px; /* Adjust for smaller screens */
             }
         }
 
@@ -91,10 +88,17 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
+            margin-top: auto; /* Ensure footer is at the bottom */
             color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
         }
     </style>
 </head>
@@ -105,11 +109,6 @@
         <source src="try.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-    <!-- Welcome header -->
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-    </header>
 
     <!-- Navigation menu -->
     <nav>
@@ -124,6 +123,9 @@
     <!-- Centered logo -->
     <div class="logo-container">
         <img src="loggo.png" alt="Logo">
+        <div class="description">
+            Hi, I'm Ikram Hakim, a passionate game designer and developer with a focus on creating engaging and educational games.
+        </div>
     </div>
 
     <!-- Footer from About Page -->
