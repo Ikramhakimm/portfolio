@@ -3,386 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My GitHub Page - Projects</title>
+    <title>Ikram's Portfolio</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: url('peakpx.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+            overflow: hidden;
         }
 
-        header, nav, .content, footer {
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            width: 100%;
-            animation-delay: 0.5s;
-        }
-
-        nav {
-            text-align: center;
-            margin: 20px 0;
-            animation-delay: 1s;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .content {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            animation-delay: 1.5s;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 20px;
-        }
-
-        .project-container {
-            text-align: center;
-        }
-
-        .projects img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10%;
-            cursor: pointer;
-            transition: transform 0.3s;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .projects img:hover {
-            transform: scale(1.05);
-        }
-
-        .lightbox {
-            display: none;
+        /* Video background styling */
+        .video-background {
             position: fixed;
-            z-index: 9999;
-            left: 0;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Behind everything */
+        }
+
+        /* Navigation menu */
+        nav {
+            position: fixed;
             top: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox video {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox:target {
-            display: flex;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: black;
-            font-size: 30px;
-            padding: 5px 10px;
-            border-radius: 50%;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
             text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            width: 100%;
-            position: relative;
-            bottom: 0;
-            animation-delay: 2s;
         }
 
-        .pagination {
-            margin: 20px;
+        nav ul {
+            list-style: none;
+            display: inline-block;
         }
 
-        .pagination button {
-            background-color: rgba(0, 0, 0, 0.8);
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 5px;
-            transition: background-color 0.3s;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
-        .pagination button:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+        nav ul li a:hover {
+            color: #ff6347; /* Highlight color on hover */
         }
 
-        .hidden {
-            display: none;
+        /* Centered logo */
+        .logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
-        .video-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .logo-container img {
+            width: 150px;
+            height: auto;
         }
 
-        .video-container video {
-            width: 45%;
-            height: auto; /* Adjust height as needed */
-        }
-
-        #seeMoreButton {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 20px auto; /* Centering */
-            display: none; /* Initially hidden */
-        }
-
-        #seeMoreButton:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+        /* For responsive video background */
+        @media (max-width: 768px) {
+            .video-background {
+                min-height: 100%;
+                width: auto;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Projects</h1>
-    </header>
+    <!-- Video background -->
+    <video autoplay muted loop class="video-background">
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
+    <!-- Navigation menu -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <div class="content">
-        <h3>My Projects</h3>
-        <div class="projects" id="projectContainer">
-            <div class="project-container">
-                <a href="#lightbox1">
-                    <img src="tryy.png" alt="Project 1" class="project-image">
-                </a>
-                <p>Make a platformer game using Godot Engine.</p>
-            </div>
-            <div class="project-container">
-                <a href="#lightbox2">
-                    <img src="tryyy.png" alt="Project 2" class="project-image">
-                </a>
-                <p>Make lego character using Blender 3D.</p>
-            </div>
-            <div class="project-container">
-                <a href="#lightbox3">
-                    <img src="tryyyy.png" alt="Project 3" class="project-image">
-                </a>
-                <p>Make Building using Blender 3D.</p>
-            </div>
-            <div class="project-container">
-                <a href="#lightbox4">
-                    <img src="tryyyyy.png" alt="Project 4" class="project-image">
-                </a>
-                <p>Make racing game using Unity 3D.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox5">
-                    <img src="fullll.png" alt="Project 5" class="project-image">
-                </a>
-                <p>Full view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox6">
-                    <img src="meja.png" alt="Project 6" class="project-image">
-                </a>
-                <p>Table view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox7">
-                    <img src="posterr.png" alt="Project 7" class="project-image">
-                </a>
-                <p>Poster view of my booth.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox8">
-                    <img src="ikramposter.png" alt="Project 8" class="project-image">
-                </a>
-                <p>My poster.</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox9">
-                    <img src="kereteee.png" alt="Project 9" class="project-image">
-                </a>
-                <p>Current project</p>
-            </div>
-            <div class="project-container hidden">
-                <a href="#lightbox10">
-                    <img src="di.png" alt="New Project" class="project-image">
-                </a>
-                <p>Food Packaging</p>
-            </div>
-        </div>
-
-        <div class="pagination" id="pagination">
-            <button id="prevButton" onclick="previousPage()">Previous</button>
-            <button id="nextButton" onclick="nextPage()">Next</button>
-        </div>
-
-        <button id="seeMoreButton" onclick="showVideoSection()">See More</button>
-
-        <div class="video-section" id="videoSection" style="display: none;">
-            <h3>My Videos</h3>
-            <div class="video-container">
-                <video controls>
-                    <source src="ikram env 2023-09-11 00-07-57.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <video controls>
-                    <source src="Preview of Productive Flame 2023-06-14 11-15-24.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
+    <!-- Centered logo -->
+    <div class="logo-container">
+        <img src="your-logo.png" alt="Logo">
     </div>
 
-    <footer>
-        <p>© 2024 Ikram Hakim. All rights reserved.</p>
-    </footer>
-
-    <!-- Lightbox for images -->
-    <div id="lightbox1" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="tryy.png" alt="Project 1">
-    </div>
-    <div id="lightbox2" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="tryyy.png" alt="Project 2">
-    </div>
-    <div id="lightbox3" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="tryyyy.png" alt="Project 3">
-    </div>
-    <div id="lightbox4" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="tryyyyy.png" alt="Project 4">
-    </div>
-    <div id="lightbox5" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="fullll.png" alt="Project 5">
-    </div>
-    <div id="lightbox6" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="meja.png" alt="Project 6">
-    </div>
-    <div id="lightbox7" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="posterr.png" alt="Project 7">
-    </div>
-    <div id="lightbox8" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="ikramposter.png" alt="Project 8">
-    </div>
-    <div id="lightbox9" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="kereteee.png" alt="Project 9">
-    </div>
-    <div id="lightbox10" class="lightbox">
-        <a href="#" class="close">×</a>
-        <img src="di.png" alt="New Project">
-    </div>
-
-    <script>
-        let currentPage = 0;
-        const itemsPerPage = 4;
-
-        function showPage(page) {
-            const projectContainers = document.querySelectorAll('.project-container');
-            projectContainers.forEach((container, index) => {
-                if (index >= page * itemsPerPage && index < (page + 1) * itemsPerPage) {
-                    container.classList.remove('hidden');
-                } else {
-                    container.classList.add('hidden');
-                }
-            });
-
-            document.getElementById('prevButton').style.display = page === 0 ? 'none' : 'inline-block';
-            document.getElementById('nextButton').style.display = (page + 1) * itemsPerPage >= projectContainers.length ? 'none' : 'inline-block';
-            document.getElementById('seeMoreButton').style.display = (page + 1) * itemsPerPage < projectContainers.length ? 'block' : 'none';
-        }
-
-        function nextPage() {
-            currentPage++;
-            showPage(currentPage);
-        }
-
-        function previousPage() {
-            currentPage--;
-            showPage(currentPage);
-        }
-
-        function showVideoSection() {
-            document.getElementById('videoSection').style.display = 'block';
-            document.getElementById('seeMoreButton').style.display = 'none'; // Hide the button after click
-        }
-
-        // Initial page load
-        showPage(currentPage);
-    </script>
 </body>
 </html>
