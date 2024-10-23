@@ -13,9 +13,6 @@
 
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Ensure body takes full viewport height */
             overflow: hidden;
         }
 
@@ -29,21 +26,12 @@
             z-index: -1; /* Behind everything */
         }
 
-        /* Top header */
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-            color: white;
-            font-size: 1.5rem;
-        }
-
         /* Navigation menu */
         nav {
             position: fixed;
-            top: 80px; /* Adjust to give space for the header */
+            top: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: black; /* Solid background color */
             padding: 10px 0;
             text-align: center;
         }
@@ -64,15 +52,29 @@
 
         /* Centered logo */
         .logo-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
         .logo-container img {
-            width: 150px;
+            width: 300px; /* Increase the size of the logo */
             height: auto;
+        }
+
+        /* Welcome header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for header */
+            width: 100%;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
         }
 
         /* For responsive video background */
@@ -80,6 +82,10 @@
             .video-background {
                 min-height: 100%;
                 width: auto;
+            }
+
+            .logo-container img {
+                width: 200px; /* Adjust for smaller screens */
             }
         }
 
@@ -90,22 +96,24 @@
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
             width: 100%;
             color: white;
-            margin-top: auto; /* Push footer to the bottom */
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
-
-    <!-- Top header -->
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-    </header>
 
     <!-- Video background -->
     <video autoplay muted loop class="video-background">
         <source src="try.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
+    <!-- Welcome header -->
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+    </header>
 
     <!-- Navigation menu -->
     <nav>
@@ -122,7 +130,7 @@
         <img src="loggo.png" alt="Logo">
     </div>
 
-    <!-- Footer -->
+    <!-- Footer from About Page -->
     <footer>
         <p>&copy; 2024 Ikramhakimm Page</p>
     </footer>
