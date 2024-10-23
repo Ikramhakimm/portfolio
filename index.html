@@ -71,6 +71,47 @@
                 width: auto;
             }
         }
+
+        /* Add the footer and cat styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for footer */
+            width: 100%;
+            margin-top: auto; /* Ensure footer is at the bottom */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 2s; /* Delay for footer */
+            position: relative; /* Make position relative for the cat GIF */
+        }
+
+        /* Cat GIF Animation */
+        .cat {
+            position: absolute;
+            top: -40px; /* Position it higher above the footer */
+            left: 0;
+            animation: moveCat 6s linear infinite; /* Adjusted speed */
+            width: 100px; /* Adjust width as needed */
+        }
+
+        @keyframes moveCat {
+            0% {
+                left: -100px; /* Start off-screen */
+                transform: scaleX(1); /* Face right */
+            }
+            50% {
+                left: calc(100% - 100px); /* Move to the right */
+                transform: scaleX(1); /* Face right */
+            }
+            51% {
+                left: calc(100% - 100px); /* Stay at the right edge */
+                transform: scaleX(-1); /* Flip to face left instantly */
+            }
+            100% {
+                left: -100px; /* Move back off-screen to the left */
+                transform: scaleX(-1); /* Face left */
+            }
+        }
     </style>
 </head>
 <body>
@@ -95,6 +136,12 @@
     <div class="logo-container">
         <img src="loggo.png" alt="Logo">
     </div>
+
+    <!-- Footer from About Page -->
+    <footer>
+        <img src="cat.gif" alt="Walking Cat" class="cat"> <!-- Replace with your cat GIF -->
+        <p>&copy; 2024 Ikramhakimm Page</p>
+    </footer>
 
 </body>
 </html>
