@@ -29,10 +29,19 @@
             z-index: -1; /* Behind everything */
         }
 
+        /* Top header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            color: white;
+            font-size: 1.5rem;
+        }
+
         /* Navigation menu */
         nav {
             position: fixed;
-            top: 0;
+            top: 80px; /* Adjust to give space for the header */
             width: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 0;
@@ -86,6 +95,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Top header -->
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+    </header>
 
     <!-- Video background -->
     <video autoplay muted loop class="video-background">
